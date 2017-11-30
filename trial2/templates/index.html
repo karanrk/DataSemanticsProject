@@ -1,0 +1,529 @@
+<!-- howdy/templates/index.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Karan</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+</head>
+<body>
+        <h1 align="center">Bloomington Resource Locator for the Differently-Abled</h1>
+        <p style="padding-right:90px; text-align:right;">Current User Address : <div id="addr" name="addr" style="padding-right:60px; text-align:right;"></div></p>
+        
+        {% load static %}
+        <img src= "static/images/k.jpeg" />
+     <br />
+
+     <form method="POST">
+  {% csrf_token %}
+  <!-- {{ form.as_p }} -->
+  <!-- <input type="text" id="dis" name="disease"/> -->
+  <select name="dd1">
+    <option selected="selected" disabled>Primary Category of Disability</option>
+            <option value="AccessibilityEquipments_Wheelchairs">AccessibilityEquipments_Wheelchairs</option>
+            <option value="Addictions_Alcohol_DrugAbuse_Advocacy">Addictions_Alcohol_DrugAbuse_Advocacy</option>
+            <option value="Addictions_Alcohol_DrugAbuse_Aging_childcare">Addictions_Alcohol_DrugAbuse_Aging_childcare</option>
+            <option value="Addictions_Alcohol_DrugAbuse_AssistanceService">Addictions_Alcohol_DrugAbuse_AssistanceService</option>
+            <option value="Addictions_Alcohol_DrugAbuse_BloomingtonRegion">Addictions_Alcohol_DrugAbuse_BloomingtonRegion</option>
+            <option value="Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture">Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture</option>
+            <option value="Addictions_Alcohol_DrugAbuse_MiscellaneousServices">Addictions_Alcohol_DrugAbuse_MiscellaneousServices</option>
+            <option value="Addictions_Alcohol_DrugAbuse_Rehabs">Addictions_Alcohol_DrugAbuse_Rehabs</option>
+            <option value="AddictionsOrAlcohol_DrugAbuse_ElkhartRegion">AddictionsOrAlcohol_DrugAbuse_ElkhartRegion</option>
+            <option value="AddictionsOrAlcohol_DrugAbuse_FortWayneRegion">AddictionsOrAlcohol_DrugAbuse_FortWayneRegion</option>
+            <option value="AddictionsOrAlcohol_DrugAbuse_HighlAndRegion">AddictionsOrAlcohol_DrugAbuse_HighlAndRegion</option>
+            <option value="AddictionsOrAlcohol_DrugAbuse_IndianapolisRegion">AddictionsOrAlcohol_DrugAbuse_IndianapolisRegion</option>
+            <option value="AddictionsOrAlcohol_DrugAbuse_SouthBendRegion">AddictionsOrAlcohol_DrugAbuse_SouthBendRegion</option>
+            <option value="AdultsWithMentalProblems">AdultsWithMentalProblems</option>
+            <option value="Advocacy_Aging_InformationScience">Advocacy_Aging_InformationScience</option>
+            <option value="Advocacy_AgingForHoosiers">Advocacy_AgingForHoosiers</option>
+            <option value="Advocacy_Alzheimer’sNeeds">Advocacy_Alzheimer’sNeeds</option>
+            <option value="Advocacy_AngelmanSyndrome">Advocacy_AngelmanSyndrome</option>
+            <option value="Advocacy_Anxiety">Advocacy_Anxiety</option>
+            <option value="Advocacy_AssistiveTechnology_Products_Autism">Advocacy_AssistiveTechnology_Products_Autism</option>
+            <option value="Advocacy_AssistiveTechnology_Products_Rehabilitation">Advocacy_AssistiveTechnology_Products_Rehabilitation</option>
+            <option value="Advocacy_AttentionDeficit">Advocacy_AttentionDeficit</option>
+            <option value="Advocacy_AutismForAmericans">Advocacy_AutismForAmericans</option>
+            <option value="Advocacy_AutismForIndianaState">Advocacy_AutismForIndianaState</option>
+            <option value="Advocacy_BirthDefects">Advocacy_BirthDefects</option>
+            <option value="Advocacy_ChildCare">Advocacy_ChildCare</option>
+            <option value="Advocacy_ChildrenPrograms/Services">Advocacy_ChildrenPrograms/Services</option>
+            <option value="Advocacy_ChildrensProgramsOrServices">Advocacy_ChildrensProgramsOrServices</option>
+            <option value="Advocacy_ChildWelfare_EducatingYoungPeople">Advocacy_ChildWelfare_EducatingYoungPeople</option>
+            <option value="Advocacy_CounselingForFamilyProblems">Advocacy_CounselingForFamilyProblems</option>
+            <option value="Advocacy_CounselingForSpecialServices">Advocacy_CounselingForSpecialServices</option>
+            <option value="Advocacy_DevelopmentalDisabilities">Advocacy_DevelopmentalDisabilities</option>
+            <option value="Advocacy_DevelopmentalDisabilities">Advocacy_DevelopmentalDisabilities</option>
+            <option value="Advocacy_DevelopmentalDisabilities">Advocacy_DevelopmentalDisabilities</option>
+            <option value="Advocacy_DevelopmentalDisabilities_Education_Training">Advocacy_DevelopmentalDisabilities_Education_Training</option>
+            <option value="Advocacy_DevelopmentalDisabilitiesTraining">Advocacy_DevelopmentalDisabilitiesTraining</option>
+            <option value="Advocacy_Diabetes">Advocacy_Diabetes</option>
+            <option value="Advocacy_DownSyndrome">Advocacy_DownSyndrome</option>
+            <option value="Advocacy_DownSyndrome_WebAccessbility">Advocacy_DownSyndrome_WebAccessbility</option>
+            <option value="Advocacy_Education_Training_HumanRights">Advocacy_Education_Training_HumanRights</option>
+            <option value="Advocacy_Education_Training_LungDiseases">Advocacy_Education_Training_LungDiseases</option>
+            <option value="Advocacy_Education_TrainingForBlind">Advocacy_Education_TrainingForBlind</option>
+            <option value="Advocacy_Education_TrainingForHearingImpairments">Advocacy_Education_TrainingForHearingImpairments</option>
+            <option value="Advocacy_FamilieswithSpecialneeds">Advocacy_FamilieswithSpecialneeds</option>
+            <option value="Advocacy_FamilyServices_DomesticViolenceProblems">Advocacy_FamilyServices_DomesticViolenceProblems</option>
+            <option value="Advocacy_FamilyServicesForDisasterManagement">Advocacy_FamilyServicesForDisasterManagement</option>
+            <option value="Advocacy_FamilyServicesForSpinalChordinjury">Advocacy_FamilyServicesForSpinalChordinjury</option>
+            <option value="Advocacy_ForbabiesOrToddlers">Advocacy_ForbabiesOrToddlers</option>
+            <option value="Advocacy_ForMentalhealth">Advocacy_ForMentalhealth</option>
+            <option value="Advocacy_Foundations_Philanthropic">Advocacy_Foundations_Philanthropic</option>
+            <option value="Advocacy_Foundations_Philanthropic">Advocacy_Foundations_Philanthropic</option>
+            <option value="Advocacy_GeneticConditions">Advocacy_GeneticConditions</option>
+            <option value="Advocacy_HealthInsurance_RespiteServices">Advocacy_HealthInsurance_RespiteServices</option>
+            <option value="Advocacy_HearingImpairments">Advocacy_HearingImpairments</option>
+            <option value="Advocacy_HearingImpairments_Deaf">Advocacy_HearingImpairments_Deaf</option>
+            <option value="Advocacy_HearingImpairments_interpretersservice">Advocacy_HearingImpairments_interpretersservice</option>
+            <option value="Advocacy_HearingImpairmentsFor_AmericanSociety">Advocacy_HearingImpairmentsFor_AmericanSociety</option>
+            <option value="Advocacy_IndependentLiving">Advocacy_IndependentLiving</option>
+            <option value="Advocacy_IndependentLiving_BedFord">Advocacy_IndependentLiving_BedFord</option>
+            <option value="Advocacy_InFormationResource">Advocacy_InFormationResource</option>
+            <option value="Advocacy_InFormationResourceAndvolunteering">Advocacy_InFormationResourceAndvolunteering</option>
+            <option value="Advocacy_LegalResources_VictimsAssistance">Advocacy_LegalResources_VictimsAssistance</option>
+            <option value="Advocacy_LegalResourcesAndSpecialEducation">Advocacy_LegalResourcesAndSpecialEducation</option>
+            <option value="Advocacy_PhysicalDisabilities_workplaceAccessibility">Advocacy_PhysicalDisabilities_workplaceAccessibility</option>
+            <option value="Advocacy_PublicAwarenessForAssistiveTechnology">Advocacy_PublicAwarenessForAssistiveTechnology</option>
+            <option value="Advocacy_SpiritualMinistries">Advocacy_SpiritualMinistries</option>
+            <option value="Advocacy_ToImproveQualityofLife">Advocacy_ToImproveQualityofLife</option>
+            <option value="AdvocacyForDown’sSyndrome">AdvocacyForDown’sSyndrome</option>
+            <option value="AdvocacyServices">AdvocacyServices</option>
+            <option value="AffordableHousing_ForExtremely_LowIncome">AffordableHousing_ForExtremely_LowIncome</option>
+            <option value="Aging_Amputation_AssistiveTech">Aging_Amputation_AssistiveTech</option>
+            <option value="Aging_ChildrenPrograms">Aging_ChildrenPrograms</option>
+            <option value="Aging_DeafProblems">Aging_DeafProblems</option>
+            <option value="Aging_Education_Training_RecreationVolunteering">Aging_Education_Training_RecreationVolunteering</option>
+            <option value="Aging_HousingPrograms">Aging_HousingPrograms</option>
+            <option value="Aging_MiscellaneousServices_MalePatrons">Aging_MiscellaneousServices_MalePatrons</option>
+            <option value="Aging_PhysicalDisabilities_Recreation">Aging_PhysicalDisabilities_Recreation</option>
+            <option value="Aging_training">Aging_training</option>
+            <option value="AgingRehabServices">AgingRehabServices</option>
+            <option value="AIDSEducation_Training_HealthEducation">AIDSEducation_Training_HealthEducation</option>
+            <option value="AIDSPreventionSupportGroups">AIDSPreventionSupportGroups</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_EvansvilleRegion">Alzheimer_27s_MiscellaneousServices_EvansvilleRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LexingtonRegion">Alzheimer_27s_MiscellaneousServices_LexingtonRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LimestoneRegion">Alzheimer_27s_MiscellaneousServices_LimestoneRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LouisvilleRegion">Alzheimer_27s_MiscellaneousServices_LouisvilleRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServicesForFamiliesofIndianastate">Alzheimer_27s_MiscellaneousServicesForFamiliesofIndianastate</option>
+            <option value="Dyslexia-Information">Dyslexia-Information</option>
+            <option value="AmericanSignLanguage_ForVisuallyImpaired">AmericanSignLanguage_ForVisuallyImpaired</option>
+            <option value="AmericanSignLanguage_HealthEducation_HearingImpairments">AmericanSignLanguage_HealthEducation_HearingImpairments</option>
+            <option value="Amputation_Arthritis">Amputation_Arthritis</option>
+            <option value="Amputation_Counseling">Amputation_Counseling</option>
+            <option value="Amputation_Education_TrainingWithEquipments">Amputation_Education_TrainingWithEquipments</option>
+            <option value="Amputation_Equipments_ResourceRepairs">Amputation_Equipments_ResourceRepairs</option>
+            <option value="Amputation_InFormation_cerebralpalsy">Amputation_InFormation_cerebralpalsy</option>
+            <option value="Amputation_LimbDifferences">Amputation_LimbDifferences</option>
+            <option value="AngelmanSyndrome_ChildrenProgram">AngelmanSyndrome_ChildrenProgram</option>
+            <option value="Animal_AssistedActivities">Animal_AssistedActivities</option>
+            <option value="Aphasia">Aphasia</option>
+            <option value="AppliancesForBlind">AppliancesForBlind</option>
+            <option value="Arthritis_Education_Training_EvansvilleRegion">Arthritis_Education_Training_EvansvilleRegion</option>
+            <option value="Arthritis_Education_Training_FortWayneRegion">Arthritis_Education_Training_FortWayneRegion</option>
+            <option value="Arthritis_Education_Training_IndianapolisRegion">Arthritis_Education_Training_IndianapolisRegion</option>
+            <option value="Arthritis_Education_Training_SouthBendRegion">Arthritis_Education_Training_SouthBendRegion</option>
+            <option value="ArtistsNetwork">ArtistsNetwork</option>
+            <option value="ArtistsWithDisabilities">ArtistsWithDisabilities</option>
+            <option value="Arts">Arts</option>
+            <option value="Arts_Employment_Miscellaneousservices">Arts_Employment_Miscellaneousservices</option>
+            <option value="Arts_MentalHealth_CrisisIntervention">Arts_MentalHealth_CrisisIntervention</option>
+            <option value="Arts_ReadingAssistance_ESL">Arts_ReadingAssistance_ESL</option>
+            <option value="Arts_Volunteering_communityOrchards">Arts_Volunteering_communityOrchards</option>
+            <option value="ArtsTrainingFor_Disabled">ArtsTrainingFor_Disabled</option>
+            <option value="Assistance_GuideDogs_CA_Region">Assistance_GuideDogs_CA_Region</option>
+            <option value="Assistance_GuideDogs_Education_Training">Assistance_GuideDogs_Education_Training</option>
+            <option value="Assistance_GuideDogs_HearingImpairments_DogsForDeaf">Assistance_GuideDogs_HearingImpairments_DogsForDeaf</option>
+            <option value="Assistance_GuideDogs_MobilityProducts">Assistance_GuideDogs_MobilityProducts</option>
+            <option value="Assistance_GuideDogs_VisionImpairments">Assistance_GuideDogs_VisionImpairments</option>
+            <option value="Assistance_GuideDogsForBlind">Assistance_GuideDogsForBlind</option>
+            <option value="AssistiveEquipment_InformationResource">AssistiveEquipment_InformationResource</option>
+            <option value="AssistiveTechForEmployees">AssistiveTechForEmployees</option>
+            <option value="AssistiveTechnology">AssistiveTechnology</option>
+            <option value="AssistiveTechnology_Products_CommunityProblems">AssistiveTechnology_Products_CommunityProblems</option>
+            <option value="AssistiveTechnology_Products_Education_Training_VisionLoss">AssistiveTechnology_Products_Education_Training_VisionLoss</option>
+            <option value="Ataxia_Telangiectasia_Cancer">Ataxia_Telangiectasia_Cancer</option>
+            <option value="AttentionDeficit">AttentionDeficit</option>
+            <option value="AttentionDeficitDisorder_Education_Training">AttentionDeficitDisorder_Education_Training</option>
+            <option value="AttentionDeficitDisorder_InformationResource">AttentionDeficitDisorder_InformationResource</option>
+            <option value="AttentionDeficitDisorder_InformationResource">AttentionDeficitDisorder_InformationResource</option>
+            <option value="Autism_AspergerBetterLivingEmpowerment">Autism_AspergerBetterLivingEmpowerment</option>
+            <option value="Autism_BehaviorManagement">Autism_BehaviorManagement</option>
+            <option value="Autism_ChildCare_LearningProblems">Autism_ChildCare_LearningProblems</option>
+            <option value="Autism_DevelopmentalServices">Autism_DevelopmentalServices</option>
+            <option value="Autism_Education_Training_preventionAndTreatingAutism">Autism_Education_Training_preventionAndTreatingAutism</option>
+            <option value="Autism_InFormationResource_TherapeuticInterventions">Autism_InFormationResource_TherapeuticInterventions</option>
+            <option value="Autism_InFormationResource_Webportal">Autism_InFormationResource_Webportal</option>
+            <option value="AutismSpectrumDisorders">AutismSpectrumDisorders</option>
+            <option value="AutoSafety">AutoSafety</option>
+            <option value="BipolarDisorder_ChildrenProgramsOrServices_Counseling">BipolarDisorder_ChildrenProgramsOrServices_Counseling</option>
+            <option value="BipolarDisorder_InFormationResource_IrvineRegion">BipolarDisorder_InFormationResource_IrvineRegion</option>
+            <option value="BirthDefects_DevelopmentalDisabilities_EpidemiologicalResearch">BirthDefects_DevelopmentalDisabilities_EpidemiologicalResearch</option>
+            <option value="BirthDefects_ParentNetworkingportal">BirthDefects_ParentNetworkingportal</option>
+            <option value="Braille_CouncilForBlind">Braille_CouncilForBlind</option>
+            <option value="Braille_Education_Training_Products_ManufacturingServices">Braille_Education_Training_Products_ManufacturingServices</option>
+            <option value="Braille_EducationPrograms">Braille_EducationPrograms</option>
+            <option value="Braille_InformationResource_VisionImpairments">Braille_InformationResource_VisionImpairments</option>
+            <option value="BrainInjury_CognitiveImpairments_IndepedentLiving">BrainInjury_CognitiveImpairments_IndepedentLiving</option>
+            <option value="BrainInjury_EquineAssistedActivities">BrainInjury_EquineAssistedActivities</option>
+            <option value="BrainInjury_InformationPortal">BrainInjury_InformationPortal</option>
+            <option value="BrainInjury_InformationResource">BrainInjury_InformationResource</option>
+            <option value="BrainInjuryAndStroke_InformationResource">BrainInjuryAndStroke_InformationResource</option>
+            <option value="BrainInjuryRehab">BrainInjuryRehab</option>
+            <option value="Camps_Children_Programs_Services">Camps_Children_Programs_Services</option>
+            <option value="Camps_ChildrenPrograms_DiabetesEducation">Camps_ChildrenPrograms_DiabetesEducation</option>
+            <option value="Camps_ChildrenPrograms_EntertainmentFacilities">Camps_ChildrenPrograms_EntertainmentFacilities</option>
+            <option value="Camps_ChildrenPrograms_ServicesForPhyisicallyChallenged">Camps_ChildrenPrograms_ServicesForPhyisicallyChallenged</option>
+            <option value="CampsAndservices">CampsAndservices</option>
+            <option value="Cancer_FreeProffessionalSupport">Cancer_FreeProffessionalSupport</option>
+            <option value="Cancer_Referrals">Cancer_Referrals</option>
+            <option value="CerebralPalsy">CerebralPalsy</option>
+            <option value="CerebralPalsy_BirthDefects_Services">CerebralPalsy_BirthDefects_Services</option>
+            <option value="CerebralPalsy_ChildCare_DevelopmentProblems">CerebralPalsy_ChildCare_DevelopmentProblems</option>
+            <option value="CerebralPalsy_DentalCare">CerebralPalsy_DentalCare</option>
+            <option value="CerebralPalsy_EducationPrograms">CerebralPalsy_EducationPrograms</option>
+            <option value="CerebralPalsy_Human_CivilRights_Webportal">CerebralPalsy_Human_CivilRights_Webportal</option>
+            <option value="CerebralPalsyMichiganRegion">CerebralPalsyMichiganRegion</option>
+            <option value="ChildCare_Childrenprogram_JobAccommodations">ChildCare_Childrenprogram_JobAccommodations</option>
+            <option value="ChildCare_ChildrenProgramsOrServices_BloomingtonRegion">ChildCare_ChildrenProgramsOrServices_BloomingtonRegion</option>
+            <option value="ChildCare_ChildrenProgramsOrServices_IndianapolisRegion">ChildCare_ChildrenProgramsOrServices_IndianapolisRegion</option>
+            <option value="ChildCare_Resources_For_CerebralPalsy">ChildCare_Resources_For_CerebralPalsy</option>
+            <option value="ChildCarePrograms">ChildCarePrograms</option>
+            <option value="ChildCareResource_Referrals">ChildCareResource_Referrals</option>
+            <option value="ChildrenGradeImprovements_Bloomington">ChildrenGradeImprovements_Bloomington</option>
+            <option value="ChildrenGradeimprovements_Carmel">ChildrenGradeimprovements_Carmel</option>
+            <option value="ChildrenGradeimprovements_Fishers">ChildrenGradeimprovements_Fishers</option>
+            <option value="ChildrenGradeimprovements_Oradell">ChildrenGradeimprovements_Oradell</option>
+            <option value="ChildrenHospital">ChildrenHospital</option>
+            <option value="ChildrenPrograms_DevelopmentalDisabilities_ForExceptionalLearners">ChildrenPrograms_DevelopmentalDisabilities_ForExceptionalLearners</option>
+            <option value="ChildrenPrograms_DevelopmentalDisabilities_RaisingDisabledChildren">ChildrenPrograms_DevelopmentalDisabilities_RaisingDisabledChildren</option>
+            <option value="ChildrenPrograms_Services_FinancialAssistance_HealthServices">ChildrenPrograms_Services_FinancialAssistance_HealthServices</option>
+            <option value="ChildrenProgramsForDevelopmentDelays">ChildrenProgramsForDevelopmentDelays</option>
+            <option value="ChildrenProgramsOrEarlyInterventionPrograms">ChildrenProgramsOrEarlyInterventionPrograms</option>
+            <option value="ChildrenProgramsOrServices_FoodServices_ReducedPriceMeals">ChildrenProgramsOrServices_FoodServices_ReducedPriceMeals</option>
+            <option value="ChildrenProgramsOrServices_Mentors_YouthMentoring">ChildrenProgramsOrServices_Mentors_YouthMentoring</option>
+            <option value="ChildrensProgramsOrHealthCareFacilities">ChildrensProgramsOrHealthCareFacilities</option>
+            <option value="ChildrensProgramsOrMentalHealthMentoring">ChildrensProgramsOrMentalHealthMentoring</option>
+            <option value="ChildrensProgramsOrServices_EntertainmentFacilities">ChildrensProgramsOrServices_EntertainmentFacilities</option>
+            <option value="ChildrensProgramsOrServices_LifeSavingTransplants">ChildrensProgramsOrServices_LifeSavingTransplants</option>
+            <option value="ChildWelfare_LegalAssistance">ChildWelfare_LegalAssistance</option>
+            <option value="ChronicIllnessForYouth">ChronicIllnessForYouth</option>
+            <option value="Clothing_Mastectomy_WomenRelatedProblems">Clothing_Mastectomy_WomenRelatedProblems</option>
+            <option value="CognitiveImpairments">CognitiveImpairments</option>
+            <option value="CommunityGardens">CommunityGardens</option>
+            <option value="CounselingCenter">CounselingCenter</option>
+            <option value="CysticFibrosis_Foundations">CysticFibrosis_Foundations</option>
+            <option value="Deaf">Deaf</option>
+            <option value="Deaf_HardHearingServices">Deaf_HardHearingServices</option>
+            <option value="DentalCare">DentalCare</option>
+            <option value="DentalCare_Fibromyalgia">DentalCare_Fibromyalgia</option>
+            <option value="DentalCare_HealthInsurance">DentalCare_HealthInsurance</option>
+            <option value="DevelopmentalDisabilities_Dyslexia">DevelopmentalDisabilities_Dyslexia</option>
+            <option value="DevelopmentalDisabilities_Education_InFormation">DevelopmentalDisabilities_Education_InFormation</option>
+            <option value="DevelopmentalDisabilities_Education_Training_JobTraining">DevelopmentalDisabilities_Education_Training_JobTraining</option>
+            <option value="DevelopmentalDisabilities_Employment_MonroeCounty">DevelopmentalDisabilities_Employment_MonroeCounty</option>
+            <option value="DevelopmentalDisabilities_Employment_Sports">DevelopmentalDisabilities_Employment_Sports</option>
+            <option value="DevelopmentalDisabilities_FamilyServices_LearningDisabilities">DevelopmentalDisabilities_FamilyServices_LearningDisabilities</option>
+            <option value="DevelopmentalDisabilities_Fitness">DevelopmentalDisabilities_Fitness</option>
+            <option value="DevelopmentalDisabilities_For_BrainInjured">DevelopmentalDisabilities_For_BrainInjured</option>
+            <option value="DevelopmentalDisabilities_FreeMediaResources">DevelopmentalDisabilities_FreeMediaResources</option>
+            <option value="DevelopmentalDisabilities_General">DevelopmentalDisabilities_General</option>
+            <option value="DevelopmentalDisabilities_HearingProblems">DevelopmentalDisabilities_HearingProblems</option>
+            <option value="DevelopmentalDisabilities_Housing_LivingSkills">DevelopmentalDisabilities_Housing_LivingSkills</option>
+            <option value="DevelopmentalDisabilities_InformationResource_MentalProblems">DevelopmentalDisabilities_InformationResource_MentalProblems</option>
+            <option value="DevelopmentalDisabilities_LearningProblems">DevelopmentalDisabilities_LearningProblems</option>
+            <option value="DevelopmentalDisabilities_LegalResources_PhysicalProblems">DevelopmentalDisabilities_LegalResources_PhysicalProblems</option>
+            <option value="DevelopmentalDisabilities_People2PeopleRelationship">DevelopmentalDisabilities_People2PeopleRelationship</option>
+            <option value="DevelopmentalDisabilities_Physical">DevelopmentalDisabilities_Physical</option>
+            <option value="DevelopmentalDisabilities_PhysicalDisabilities_Washington">DevelopmentalDisabilities_PhysicalDisabilities_Washington</option>
+            <option value="DevelopmentalDisabilities_SpiritualMinistries_Church">DevelopmentalDisabilities_SpiritualMinistries_Church</option>
+            <option value="DevelopmentalDisabilities_Training">DevelopmentalDisabilities_Training</option>
+            <option value="DevelopmentalDisabilities_Webportal">DevelopmentalDisabilities_Webportal</option>
+            <option value="DevelopmentDelayed">DevelopmentDelayed</option>
+            <option value="DevelopmentDisabilities_Clarksville">DevelopmentDisabilities_Clarksville</option>
+            <option value="DevelopmentDisabilities_Evansville">DevelopmentDisabilities_Evansville</option>
+            <option value="DevelopmentDisabilities_Greencastle">DevelopmentDisabilities_Greencastle</option>
+            <option value="Diabetes_Education_Training_AlexAndriaRegion">Diabetes_Education_Training_AlexAndriaRegion</option>
+            <option value="Diabetes_NeurologicalDisorders_Occupational">Diabetes_NeurologicalDisorders_Occupational</option>
+            <option value="Disability_InformationResource">Disability_InformationResource</option>
+            <option value="Disability_MediationGuidelines">Disability_MediationGuidelines</option>
+            <option value="DisabilityPlates_MotorVehicles">DisabilityPlates_MotorVehicles</option>
+            <option value="DisabledAdults">DisabledAdults</option>
+            <option value="DisasterPreparedness">DisasterPreparedness</option>
+            <option value="Discrimination">Discrimination</option>
+            <option value="DownSyndrome">DownSyndrome</option>
+            <option value="DownSyndrome_CommunicationProblems">DownSyndrome_CommunicationProblems</option>
+            <option value="DownSyndrome_DevelopmentalDisability">DownSyndrome_DevelopmentalDisability</option>
+            <option value="Drugabuse">Drugabuse</option>
+            <option value="Dyslexia">Dyslexia</option>
+            <option value="Dyslexia_Education_Training">Dyslexia_Education_Training</option>
+            <option value="Dystonia_InformationResource">Dystonia_InformationResource</option>
+            <option value="EarlyIntervention_ChildCare_PhysicalProblems">EarlyIntervention_ChildCare_PhysicalProblems</option>
+            <option value="EarlyIntervention_ServicesFor_Infants">EarlyIntervention_ServicesFor_Infants</option>
+            <option value="EarlyInterventionPrograms_Dyslexia">EarlyInterventionPrograms_Dyslexia</option>
+            <option value="EarlyInterventionPrograms_SpiritualCare_ForChildren">EarlyInterventionPrograms_SpiritualCare_ForChildren</option>
+            <option value="Education_Training_BiasFreeLearning">Education_Training_BiasFreeLearning</option>
+            <option value="Education_Training_DogsFordeaf">Education_Training_DogsFordeaf</option>
+            <option value="Education_Training_Employment_Housing">Education_Training_Employment_Housing</option>
+            <option value="Education_Training_Employment_MentalHealth">Education_Training_Employment_MentalHealth</option>
+            <option value="Education_Training_EnvironmentalMedicine">Education_Training_EnvironmentalMedicine</option>
+            <option value="Education_Training_FamilyServices_Alzheimer's">Education_Training_FamilyServices_Alzheimer's</option>
+            <option value="Education_Training_FinancialAssistance_food">Education_Training_FinancialAssistance_food</option>
+            <option value="Education_Training_Food_ReferralServices">Education_Training_Food_ReferralServices</option>
+            <option value="Education_Training_HearingImpairments_WashingtonRegion">Education_Training_HearingImpairments_WashingtonRegion</option>
+            <option value="Education_Training_Hotline">Education_Training_Hotline</option>
+            <option value="Education_Training_Human_CivilRights_DiscriminationComplaints">Education_Training_Human_CivilRights_DiscriminationComplaints</option>
+            <option value="Education_Training_InfantsService">Education_Training_InfantsService</option>
+            <option value="Education_Training_LoweSyndrome">Education_Training_LoweSyndrome</option>
+            <option value="Education_Training_MobilityAssesment">Education_Training_MobilityAssesment</option>
+            <option value="Education_TrainingForWomenAndinfants">Education_TrainingForWomenAndinfants</option>
+            <option value="Educational_AncillaryServices_ElementarySchools">Educational_AncillaryServices_ElementarySchools</option>
+            <option value="EducationalProgramsForyouth">EducationalProgramsForyouth</option>
+            <option value="EhlersDanlosSyndrome">EhlersDanlosSyndrome</option>
+            <option value="EmergencyAssistance_FinancialAssistance_Basicneeds">EmergencyAssistance_FinancialAssistance_Basicneeds</option>
+            <option value="EmergencyAssistance_MonroeCounty">EmergencyAssistance_MonroeCounty</option>
+            <option value="Employment_DisabilityResearch">Employment_DisabilityResearch</option>
+            <option value="Employment_Mentors">Employment_Mentors</option>
+            <option value="Employment_TrainingServices">Employment_TrainingServices</option>
+            <option value="EntertainmentForAll">EntertainmentForAll</option>
+            <option value="EpilepsySupport">EpilepsySupport</option>
+            <option value="EpilepsyWelfare">EpilepsyWelfare</option>
+            <option value="EqualOpportunity_For_the_Disabled">EqualOpportunity_For_the_Disabled</option>
+            <option value="EquineAssistedActivities">EquineAssistedActivities</option>
+            <option value="Equipment_Health">Equipment_Health</option>
+            <option value="Equipment_MiscellaneousServices">Equipment_MiscellaneousServices</option>
+            <option value="Equipments_ForTheNeedy">Equipments_ForTheNeedy</option>
+            <option value="Equipments_ListeningDevices">Equipments_ListeningDevices</option>
+            <option value="FamilyServices_Speech_LanguageDisorders">FamilyServices_Speech_LanguageDisorders</option>
+            <option value="FamilyServices_Tay_Sachs">FamilyServices_Tay_Sachs</option>
+            <option value="FinancialAssistance_HearingImpairments_Tinnitus">FinancialAssistance_HearingImpairments_Tinnitus</option>
+            <option value="FinancialAssistance_SpeechProblems">FinancialAssistance_SpeechProblems</option>
+            <option value="FoodServices_UnableToCook">FoodServices_UnableToCook</option>
+            <option value="Foundations_Philanthropic_ImprovingQualityofLife">Foundations_Philanthropic_ImprovingQualityofLife</option>
+            <option value="FoundationsForRetinalDisease">FoundationsForRetinalDisease</option>
+            <option value="FoundationsOrPhilanthropic_PhysicalDisabilities">FoundationsOrPhilanthropic_PhysicalDisabilities</option>
+            <option value="GrowthDisorders">GrowthDisorders</option>
+            <option value="Hardware_Software_ForDisabled">Hardware_Software_ForDisabled</option>
+            <option value="HealthCare">HealthCare</option>
+            <option value="HealthCareFor_LowIncome">HealthCareFor_LowIncome</option>
+            <option value="HealthEducation_InFormationResource_AIDS">HealthEducation_InFormationResource_AIDS</option>
+            <option value="HealthServices_behavior">HealthServices_behavior</option>
+            <option value="HealthServices_NeurologicalDisorders">HealthServices_NeurologicalDisorders</option>
+            <option value="HealthServices_NeurologicalDisorders">HealthServices_NeurologicalDisorders</option>
+            <option value="HealthServices_Oral_Dental_KidneyProblems">HealthServices_Oral_Dental_KidneyProblems</option>
+            <option value="HealthServices_PhysicalDisabilities_ChristianPrinciples">HealthServices_PhysicalDisabilities_ChristianPrinciples</option>
+            <option value="HealthServices_Speech_LanguageDisorders">HealthServices_Speech_LanguageDisorders</option>
+            <option value="HealthServices_SpiritualMinistries">HealthServices_SpiritualMinistries</option>
+            <option value="Hearing_Impairments">Hearing_Impairments</option>
+            <option value="HearingImpairments_Amputation">HearingImpairments_Amputation</option>
+            <option value="Hemophilia">Hemophilia</option>
+            <option value="HighSchoolProgramsForBlind">HighSchoolProgramsForBlind</option>
+            <option value="HIV_AIDS_Care_Coordination">HIV_AIDS_Care_Coordination</option>
+            <option value="HIVAndAIDS">HIVAndAIDS</option>
+            <option value="Homelessness_AndPoverty">Homelessness_AndPoverty</option>
+            <option value="Housing_Human_CivilRights">Housing_Human_CivilRights</option>
+            <option value="Housing_InformationResource_AIDS">Housing_InformationResource_AIDS</option>
+            <option value="Human_CivilRights_InformationResource_FundedResearchfacility">Human_CivilRights_InformationResource_FundedResearchfacility</option>
+            <option value="Human_CivilRights_SpecialEducationService">Human_CivilRights_SpecialEducationService</option>
+            <option value="Indiana's_OfficialWebPortal">Indiana's_OfficialWebPortal</option>
+            <option value="InFormationCenter">InFormationCenter</option>
+            <option value="InformationResource_ExpoMiscellaneousServices">InformationResource_ExpoMiscellaneousServices</option>
+            <option value="InformationResource_ForArtists">InformationResource_ForArtists</option>
+            <option value="InformationResource_Libraries">InformationResource_Libraries</option>
+            <option value="InformationResource_PhysicalDisabilities_AwarenessFocused">InformationResource_PhysicalDisabilities_AwarenessFocused</option>
+            <option value="InFormationResource_RehabilitationResearch">InFormationResource_RehabilitationResearch</option>
+            <option value="InformationResource_SpinaBifida">InformationResource_SpinaBifida</option>
+            <option value="InFormationResource_SpinalCordDysfunction">InFormationResource_SpinalCordDysfunction</option>
+            <option value="InformationResourceForDisability">InformationResourceForDisability</option>
+            <option value="International_Forum_For_Deaf">International_Forum_For_Deaf</option>
+            <option value="InterpreterServiceProgram">InterpreterServiceProgram</option>
+            <option value="JuvenileDiabetes">JuvenileDiabetes</option>
+            <option value="Kidneyproblems">Kidneyproblems</option>
+            <option value="Libraries_HomeboundService">Libraries_HomeboundService</option>
+            <option value="Libraries_HomeboundService_ParkingPermits">Libraries_HomeboundService_ParkingPermits</option>
+            <option value="Libraries_HomeBoundServiceForAdults">Libraries_HomeBoundServiceForAdults</option>
+            <option value="Library_InformationCenter_ForDisabilities">Library_InformationCenter_ForDisabilities</option>
+            <option value="LibraryForBlind">LibraryForBlind</option>
+            <option value="LibraryServicesForBlind">LibraryServicesForBlind</option>
+            <option value="Lifts_Elevators_MedicalEquipment">Lifts_Elevators_MedicalEquipment</option>
+            <option value="LowcostReadingAssistance">LowcostReadingAssistance</option>
+            <option value="LoweSyndrome">LoweSyndrome</option>
+            <option value="LowVisionProblems">LowVisionProblems</option>
+            <option value="LungDiseases_IndianapolisRegion">LungDiseases_IndianapolisRegion</option>
+            <option value="LungDiseases_LouisvilleRegion">LungDiseases_LouisvilleRegion</option>
+            <option value="LungDiseases_NewYorkRegion">LungDiseases_NewYorkRegion</option>
+            <option value="Medicaid_MentalHealthPrograms">Medicaid_MentalHealthPrograms</option>
+            <option value="MedicalLibrary">MedicalLibrary</option>
+            <option value="MembershipOrganizations_Prader_WilliSyndrome">MembershipOrganizations_Prader_WilliSyndrome</option>
+            <option value="MembershipOrganizations_Transportation_planning">MembershipOrganizations_Transportation_planning</option>
+            <option value="Mild_BrainInjury_CognitiveImpairments">Mild_BrainInjury_CognitiveImpairments</option>
+            <option value="MinorityNeeds">MinorityNeeds</option>
+            <option value="MiscellaneousServices_NeurologicalDisorders">MiscellaneousServices_NeurologicalDisorders</option>
+            <option value="MobilityProblems">MobilityProblems</option>
+            <option value="MS">MS</option>
+            <option value="MS_EducationAndTraining">MS_EducationAndTraining</option>
+            <option value="MultipleSclerosis">MultipleSclerosis</option>
+            <option value="MultipleSclerosisRehab">MultipleSclerosisRehab</option>
+            <option value="NationalLibraryServicesForBlind">NationalLibraryServicesForBlind</option>
+            <option value="NationalPolicyForDevelopmentalDisabilities">NationalPolicyForDevelopmentalDisabilities</option>
+            <option value="Need_LongerAssistance_AtHospitals">Need_LongerAssistance_AtHospitals</option>
+            <option value="NurseServices_for_in_HomePatients">NurseServices_for_in_HomePatients</option>
+            <option value="NutritionalSupport_ForMothers_Babies">NutritionalSupport_ForMothers_Babies</option>
+            <option value="NutritiousFoodFor_Eligible_Needy">NutritiousFoodFor_Eligible_Needy</option>
+            <option value="OccupationalTherapy_PhysicalTherapy">OccupationalTherapy_PhysicalTherapy</option>
+            <option value="Oldage_In_HouseServices">Oldage_In_HouseServices</option>
+            <option value="OnlineportalAccesstoOfficialstategovernmentinFormationAndservices">OnlineportalAccesstoOfficialstategovernmentinFormationAndservices</option>
+            <option value="OutPatientServices">OutPatientServices</option>
+            <option value="ParentsWithDisabilities_MiscellaneousServices">ParentsWithDisabilities_MiscellaneousServices</option>
+            <option value="ParentsWithDisablities">ParentsWithDisablities</option>
+            <option value="PediatricCare">PediatricCare</option>
+            <option value="PediatricServices">PediatricServices</option>
+            <option value="PermanentHome_For_BrainInjured">PermanentHome_For_BrainInjured</option>
+            <option value="PhysicalEducation">PhysicalEducation</option>
+            <option value="PoisonCenter">PoisonCenter</option>
+            <option value="PostSecondaryEducationProblems">PostSecondaryEducationProblems</option>
+            <option value="PregnancyAndAdoptionSupportMiscellaneousServices">PregnancyAndAdoptionSupportMiscellaneousServices</option>
+            <option value="ProfessionalAssociations_Psychiatry">ProfessionalAssociations_Psychiatry</option>
+            <option value="Prosthetics_OrthoticProblems">Prosthetics_OrthoticProblems</option>
+            <option value="Publicpolicy">Publicpolicy</option>
+            <option value="ReadingServiceForVisuallyImpaired">ReadingServiceForVisuallyImpaired</option>
+            <option value="Recreation_RespiteServices">Recreation_RespiteServices</option>
+            <option value="Recreation_TherapeuticRidingProgramsForBlind">Recreation_TherapeuticRidingProgramsForBlind</option>
+            <option value="Rehab">Rehab</option>
+            <option value="RehabForAutism">RehabForAutism</option>
+            <option value="ReproductiveHealth_Bloomington">ReproductiveHealth_Bloomington</option>
+            <option value="ReproductiveHealth_Indianapolis">ReproductiveHealth_Indianapolis</option>
+            <option value="Research_DisabilityAndHealth">Research_DisabilityAndHealth</option>
+            <option value="RetainEmployment_ForDisabled">RetainEmployment_ForDisabled</option>
+            <option value="SocialSecurityCards_Miscellaneous">SocialSecurityCards_Miscellaneous</option>
+            <option value="SocialService">SocialService</option>
+            <option value="SpecialEducation_Training">SpecialEducation_Training</option>
+            <option value="SpecialEducationForParenting">SpecialEducationForParenting</option>
+            <option value="SpeechPathology">SpeechPathology</option>
+            <option value="SpinaBifida">SpinaBifida</option>
+            <option value="SpinalChord_Injuries">SpinalChord_Injuries</option>
+            <option value="SpinalChord_Problems">SpinalChord_Problems</option>
+            <option value="SportsForDeaf">SportsForDeaf</option>
+            <option value="StatewideIndependentCouncil">StatewideIndependentCouncil</option>
+            <option value="StatsData">StatsData</option>
+            <option value="SupportNetwork">SupportNetwork</option>
+            <option value="TechnologyOrComputerSupport">TechnologyOrComputerSupport</option>
+            <option value="Telecommunication_For_Deaf">Telecommunication_For_Deaf</option>
+            <option value="TrainingForVolunteers">TrainingForVolunteers</option>
+            <option value="Transportation_Wheelchairs_ThoseCannotUseBT">Transportation_Wheelchairs_ThoseCannotUseBT</option>
+            <option value="TraumaticBrain">TraumaticBrain</option>
+            <option value="VictoryOverMental_Illness">VictoryOverMental_Illness</option>
+            <option value="VolunteeringOnDownSyndrome">VolunteeringOnDownSyndrome</option>
+            <option value="WebAccessibilityProblems">WebAccessibilityProblems</option>
+            <option value="Women_Problems">Women_Problems</option>
+            <option value="WomenHealthServices_STD_testing">WomenHealthServices_STD_testing</option>
+            <option value="Workforce_Development">Workforce_Development</option>
+
+ 
+            
+    </select>
+
+
+  <br />
+  <br />
+  <label><input type="checkbox" id="rn" name="ResourceName"/>Resource Name </label><br />
+  <label><input type="checkbox" id="ad" name="Addr"/>Address</label><br />
+  <label><input type="checkbox" id="ph" name="Phone"/>Phone </label><br />
+  <label><input type="checkbox" id="web" name="website" />Website</label><br />
+  <label><input type="checkbox" id="ss" name="description"/>Description</label><br />
+  <label><input type="checkbox" id="ss" name="email"/>Email</label><br />
+  <br />
+  
+  <h3>Also try our new feature to list all the Helpful Resorces near you, by selecting the range below </h3>
+  <select name="ranged">
+    <option selected="selected" disabled> Radius in Miles</option>
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+    </select> 
+  <br />
+
+  <input type="hidden" id="address" name="address"/>
+  <br /> 
+  <!-- <input type="text" id = "location" name="location" placeholder="karan" />  -->
+  <button type="submit">Submit </button>
+    
+    
+    
+      </form> 
+
+    
+
+    </body>
+
+<script type="text/javascript" charset="utf-8">
+ $(document).ready(function() {
+         var currgeocoder;
+
+         //Set geo location lat and long
+
+         navigator.geolocation.getCurrentPosition(function(position, html5Error) {
+
+             geo_loc = processGeolocationResult(position);
+             currLatLong = geo_loc.split(",");
+             initializeCurrent(currLatLong[0], currLatLong[1]);
+
+        });
+
+        //Get geo location result
+
+       function processGeolocationResult(position) {
+             html5Lat = position.coords.latitude; //Get latitude
+             html5Lon = position.coords.longitude; //Get longitude
+             // $('#location').html(html5Lat);
+             html5TimeStamp = position.timestamp; //Get timestamp
+             html5Accuracy = position.coords.accuracy; //Get accuracy in meters
+             return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
+       }
+
+        //Check value is present or not & call google api function
+
+        function initializeCurrent(latcurr, longcurr) {
+             currgeocoder = new google.maps.Geocoder();
+             console.log(latcurr + "-- ######## --" + longcurr);
+
+             if (latcurr != '' && longcurr != '') {
+                 var myLatlng = new google.maps.LatLng(latcurr, longcurr);
+                 return getCurrentAddress(myLatlng);
+             }
+       }
+
+        //Get current address
+
+         function getCurrentAddress(location) {
+              currgeocoder.geocode({
+                  'location': location
+
+            }, function(results, status) {
+           
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results[0]);
+                    $("#address").val(results[0].formatted_address);
+                    $("#addr").html(results[0].formatted_address);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+         }
+
+         /*var infowindow = new google.maps.InfoWindow({
+    
+        position: pos,
+        content: 'Location found using HTML5.'
+        });
+        // the below line has been inserted to assign a JS variable to HTML input field called 'geolocation' 
+        document.getElementById('location').value = pos*/
+        
+        //he below line has been inserted to autosubmit the form.  
+        /*document.getElementById("geolocation").submit();*/ 
+      });
+
+    </script>   
+    
+</html>

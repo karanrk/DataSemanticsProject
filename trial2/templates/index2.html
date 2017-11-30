@@ -1,0 +1,70 @@
+<!-- howdy/templates/about.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Karan</title>
+	</head>
+
+
+
+    
+    <body>
+        <h1 align="center">Welcome to the Bloomington Resource locator page with the requested details !!</h1>
+        <h4 align="right" padding-left="150px" > User Lattitue and Longitude : {{k}} </h4>
+
+ <h3> The input selected is {{text}} </h3>
+ 
+ <h3> Resource/Service Name: {{t1}} </h3>
+    
+ <h3> Address : {{t2}} {{t3}},{{t4}}-{{t5}} </h3>
+
+ <h3> Phone Number : {{t6}} </h3>
+ 
+ <h4> Description : {{t7}} </h3>
+ 
+ <h4> Email : {{t8}} </h3>
+
+ <h4> Website : {{t9}} </h4>
+
+ 
+
+
+
+ <h3 align="center"> Resources within selected Radius </h3>
+ 
+
+
+<table border="2" align="center">
+<tr>
+  <th>Resource Name</th>
+  <th>Distance (Miles)</th>
+  <th>Address</th>
+  <th>Primary Category</th>
+  <!-- <th>Primary Category</th> -->
+</tr>
+
+
+{% for a,d,r,pc in t10 %}
+<tr>
+<td align="center">{{r}} </td>
+<td align="center">{{d}} </td>
+<td align="center">{{a}} </td>
+<td align="center">{{pc}} </td>
+<!-- <td align="center">{{pc}} </td> -->
+</tr>
+{% endfor %}
+
+</table> 
+
+
+
+
+
+ 
+ 
+    
+    <a href="/">Go back home</a>
+     
+    </body>
+</html>
