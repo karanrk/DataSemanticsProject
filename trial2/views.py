@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render,HttpResponse,render_to_response
 from django.views.generic import TemplateView
 from django.template import RequestContext
@@ -11,6 +10,7 @@ from geopy.geocoders import Nominatim
 import openpyxl
 import haversine
 import ssl
+# from django import template
 #from myapp.models import PointOfInterest
 
 g=rdflib.Graph()
@@ -25,7 +25,8 @@ cells = sheet['A2':'D372']
 di={}
 dit={}
 dit1={}
-#print cells
+
+
 for c1, c2 ,c3,c4 in cells:
 	di[c1.value]=c2.value 	# adrees, lat, lon
 	dit[c1.value]=c3.value 	# address, resource
@@ -47,12 +48,23 @@ class homeview(TemplateView):
 		ad = request.POST.get('address')
 		#print("Temp first address",ad)
 
-		ad1=' '.join(ad.split(' ')[1:])
+		def geocoding(ad):
+				ad1=' '.join(ad.split(' ')[1:])
+				print 'ad1',ad1
 		#print("This is adress!",ad1)
-		geolocator = Nominatim()
-		gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-		loc= geolocator.geocode(ad1)
+				geolocator = Nominatim()
+		# gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+				try:
+					loc= geolocator.geocode(ad1)
+				except GeocoderTimedOut:
+					geocoding(ad1)
+				print 'loc',loc
+				if (loc):
+					return loc
+				else:
+					geocoding(ad1)
 		#print loc.address
+		loc=geocoding(ad)
 		k=[0] * 2
 		k[0],k[1]=loc.latitude,loc.longitude
 		#print "hey!",k 
@@ -84,8 +96,10 @@ class homeview(TemplateView):
 		else:
 			# if form.is_valid():
 			#ToDo add primary Category	
-				f1=f2=f3=f4=0
+				f1=f2=f3=f4=f5=f6=f7=f8=f9=f10=0
 				text=request.POST.get('dd1')
+				if text=='':
+					raise ValidationError(_('Please select one value from list'))
 				
 				qu='http://example.org/data/resources#'+text
 				ns='http://example.org/data/resources#'
@@ -125,28 +139,28 @@ class homeview(TemplateView):
 
 
 			  	if request.POST.getlist('Phone'):
-					f3=1
+					f6=1
 					q1 = prepareQuery('SELECT ?pn  WHERE { ?a res:Phone ?pn . }',initNs=initNS)
 					t=rdflib.URIRef(qu)
 					for row in g.query(q1, initBindings = {'a':t}):
 							t6="%s" %row
 
 				if request.POST.getlist('description'):
-					f4=1
+					f7=1
 					q2 = prepareQuery('SELECT ?des  WHERE { ?a res:Description ?des . }',initNs=initNS)
 					t=rdflib.URIRef(qu)
 					for row in g.query(q2, initBindings = {'a':t}):
 							t7="%s" %row
 				
 				if request.POST.getlist('email'):
-					f5=1
+					f8=1
 					q3 = prepareQuery('SELECT ?email  WHERE { ?a res:E_mail ?email . }',initNs=initNS)
 					t=rdflib.URIRef(qu)
 					for row in g.query(q3, initBindings = {'a':t}):
 							t8="%s" %row 
 
 				if request.POST.getlist('website'):
-					f6=1
+					f9=1
 					q4 = prepareQuery('SELECT ?web  WHERE { ?a res:Website ?web . }',initNs=initNS)
 					t=rdflib.URIRef(qu)
 					for row in g.query(q4, initBindings = {'a':t}):
@@ -170,7 +184,7 @@ class homeview(TemplateView):
 							#print addr,dit[addr]
 
 					d.sort(key =lambda x: x[1])
-					f7=1
+					f10=1
 					t10=d
 				if rng == 5:
 					d=[]
@@ -188,7 +202,7 @@ class homeview(TemplateView):
 							#print addr,dit[addr]
 
 					d.sort(key =lambda x: x[1])
-					f7=1
+					f10=1
 					t10=d
 				if rng == 10:
 					d=[]
@@ -206,13 +220,12 @@ class homeview(TemplateView):
 							#print addr,dit[addr]
 
 					d.sort(key =lambda x: x[1])
-					f7=1
+					f10=1
 					t10=d	
 
 
 					
-
-
+				
 					
 						
 
@@ -243,29 +256,29 @@ class homeview(TemplateView):
 				# k=[0] * 2
 				# k[0],k[1]=loc.latitude,loc.longitude 
 
-				if (f1==1 and f2 ==0 and f3==0 and f4==0):
-					args={'text':text,'t1':t1}
-				if (f1==1 and f2==1 and f3 ==0 and f4==0):
-					args={'text':text,'t1':t1,'t2':t2}
-				if (f1==1 and f2==1 and f3==1 and f4 ==0):
-					args={'text':text,'t1':t1,'t2':t2,'t3':t3}
-				if(f1==1 and f2==1 and f3==1 and f4 ==1 and f5==1 and f6==1):
+				if (f1==1 and f2 ==0 and f6==0 and f7==0 and f8==0 and f9==0 and f10==1):
+					args={'text':text,'t1':t1,'t10':t10,'k':k}
+				if (f1==1 and f2==1 and f6 ==0 and f7==0 and f8==0 and f9==0 and f10==1 ):
+					args={'text':text,'t1':t1,'t2':t2,'t10':t10,'k':k}
+				if (f1==1 and f2==1 and f6==1 and f7 ==0 and f8==0 and f9==0 and f10==1):
+					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t6':t6,'t10':t10,'k':k}
+				if(f1==1 and f2==1 and f6==1 and f7==1 and f8==1 and f9==1 and f10==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'k':k,'t5':t5,'t6':t6,'t7':t7,'t8':t8,'t9':t9,'t10':t10}
 						
-				if(f1==0 and f2==1 and f3==1 and f4==1):
-					args={'text':text,'t4':t4,'t2':t2,'t3':t3}
-				if(f1==0 and f2==0 and f3==1 and f4==1):
-					args={'text':text,'t3':t1,'t4':t4}
+				if(f1==1 and f2==1 and f9==1 and f7==1 and f8==0):
+					args={'text':text,'t4':t4,'t2':t2,'t3':t3,'t5':t5,'t9':t9,'t7':t7,'k':k,'t10':t10}
+				if(f1==1 and f2==0 and f7==1 and f9==1 and f8==0):
+					args={'text':text,'t7':t7,'t9':t9,'k':k,'t10':t10,'t1':t1}
 				if(f1==0 and f2==0 and f3==0 and f4==1):
-					args={'text':text,'t4':t4}
+					args={'text':text,'t4':t4,'k':k,'t10':t10}
 				if(f1==0 and f2==1 and f3==0 and f4==0):
-					args={'text':text,'t2':t2}
+					args={'text':text,'t2':t2,'k':k,'t10':t10}
 				if(f1==0 and f2==0 and f3==1 and f4==0):
-					args={'text':text,'t3':t3}
-				if(f1==1 and f2==1 and f3==0 and f4==1):
-					args={'text':text,'t1':t1,'t2':t2,'t4':t4}
-				if(f1==1 and f2==0 and f3==1 and f4==1):
-					args={'text':text,'t1':t1,'t3':t3,'t4':t4}
+					args={'text':text,'t3':t3,'k':k,'t10':t10}
+				if(f1==1 and f9==1 and f8==0 and f7==0):
+					args={'text':text,'t1':t1,'t2':t2,'t4':t4,'k':k,'t10':t10}
+				if(f1==1 and f2==0 and f8==1 and f9==1):
+					args={'text':text,'t1':t1,'t8':t8,'t9':t9,'k':k,'t10':t10}
 
 				return render_to_response('index2.html', args)
 			# else:

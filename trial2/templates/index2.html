@@ -13,25 +13,41 @@
         <h1 align="center">Welcome to the Bloomington Resource locator page with the requested details !!</h1>
         <h4 align="right" padding-left="150px" > User Lattitue and Longitude : {{k}} </h4>
 
+ 
+
  <h3> The input selected is {{text}} </h3>
  
- <h3> Resource/Service Name: {{t1}} </h3>
+ {% if t1 %}
+  <h3> Resource/Service Name: {{t1}} </h3>
+  {% endif %}
     
- <h3> Address : {{t2}} {{t3}},{{t4}}-{{t5}} </h3>
+  {% if t2 %}
+  <h3> Address : {{t2}}  {{t3}},{{t4}} {{t5}} </h3>
+  {% endif  %}
 
- <h3> Phone Number : {{t6}} </h3>
+ {% if t6 %}
+  <h3> Phone Number : {{t6}} </h3>
+  {% endif  %}
  
- <h4> Description : {{t7}} </h3>
  
+ {% if t7 %}
+  <h4> Description : {{t7}} </h3>
+ {% endif  %}
+ 
+ {% if t8 %}
  <h4> Email : {{t8}} </h3>
-
+ {% endif  %}
+ 
+ {% if t9 %}
  <h4> Website : {{t9}} </h4>
+ {% endif  %}
 
  
 
 
 
  <h3 align="center"> Resources within selected Radius </h3>
+ 
  
 
 

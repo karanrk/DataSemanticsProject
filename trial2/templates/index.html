@@ -1,26 +1,101 @@
 <!-- howdy/templates/index.html -->
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Karan</title>
+        <title>Data Semantics Project</title>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+        <style style="text/css">
+
+.bg{
+  background-image: url("static/images/difabled.jpg");
+  /*width: 150px;*/
+  /*height: 200px;*/
+  height: 500px;
+  background-size: cover;
+  /*filter: brightness(50%);*/
+  
+  background-repeat: no-repeat;
+  background-position: 200% 200%;
+
+  /*background-origin: content-box ;*/
+  background-attachment: fixed;
+  -webkit-transition: background-image 0.5s linear;}
+
+.bg2{
+  background-image: url("static/images/help.jpg");
+  /*width: 150px;*/
+  /*height: 200px;*/
+  height: 1000px;
+  /*filter: brightness(50%);*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 190% 190%;
+  /*background-origin: content-box ;*/
+  /*background-attachment: fixed;*/
+
+}
+
+
+h1 { color: red;}
+
+h2 {color: blue;}
+
+.chk{
+  display:inline-block;}
+
+select{
+  margin-left: 700px;}
+
+.sub{
+ margin-left: 850px; }
+
+.rad{
+ margin-left: 800px; }
+
+strong {
+  text-decoration: underline;
+  text-decoration-style: solid;}
+  .col {
+    color: white;
+  }
+
+</style>
+
 </head>
-<body>
+
+<body>  
+        <div class="bg">
         <h1 align="center">Bloomington Resource Locator for the Differently-Abled</h1>
+        <h2 align="center">Let's join our hands to help the specially abled people with their basic needs and point them in the right direction </h2> 
+
         <p style="padding-right:90px; text-align:right;">Current User Address : <div id="addr" name="addr" style="padding-right:60px; text-align:right;"></div></p>
+        <p>
+          <div>
+          </div>
+        </p>
+
+
+        </div>
+  
         
-        {% load static %}
-        <img src= "static/images/k.jpeg" />
+        <!-- <img src= "static/images/k.jpeg" /> -->
      <br />
 
-     <form method="POST">
+
+     <div class="bg2">
+     <form  method="POST" name="collect_data">
+    <br />
   {% csrf_token %}
   <!-- {{ form.as_p }} -->
   <!-- <input type="text" id="dis" name="disease"/> -->
-  <select name="dd1">
-    <option selected="selected" disabled>Primary Category of Disability</option>
+    <h3  class="col" align="center"> Please Let us know the <strong> main area of your concern </strong>, by selecting the primary category from below list </h3>
+
+  <select name="dd1" required autofocus>
+    <option value="">Please select</option>
+    <!-- <option selected="selected" disabled>Primary Category of Disability</option> -->
             <option value="AccessibilityEquipments_Wheelchairs">AccessibilityEquipments_Wheelchairs</option>
             <option value="Addictions_Alcohol_DrugAbuse_Advocacy">Addictions_Alcohol_DrugAbuse_Advocacy</option>
             <option value="Addictions_Alcohol_DrugAbuse_Aging_childcare">Addictions_Alcohol_DrugAbuse_Aging_childcare</option>
@@ -427,17 +502,27 @@
 
   <br />
   <br />
-  <label><input type="checkbox" id="rn" name="ResourceName"/>Resource Name </label><br />
-  <label><input type="checkbox" id="ad" name="Addr"/>Address</label><br />
-  <label><input type="checkbox" id="ph" name="Phone"/>Phone </label><br />
-  <label><input type="checkbox" id="web" name="website" />Website</label><br />
-  <label><input type="checkbox" id="ss" name="description"/>Description</label><br />
-  <label><input type="checkbox" id="ss" name="email"/>Email</label><br />
+  <div class="col">
+  <table> 
+    <tr>
+      <td width="50%"><label><input type="checkbox" id="rn" name="ResourceName"/>Resource Name</label></td>
+    <td width="46%"><label><input type="checkbox" id="ad" name="Addr"/>Address</label></td>
+    <td width="30%"><label><input type="checkbox" id="ph" name="Phone"/>Phone</label></td>
+  </tr>
+  <tr>
+    <td><label><input type="checkbox" id="web" name="website" />Website</label></td>
+    <td><label><input type="checkbox" id="ss" name="description"/>Description</label></td>
+    <td><label><input type="checkbox" id="ss" name="email"/>Email</label><br /></td>
+  </tr>
+</table>
+
   <br />
+
   
-  <h3>Also try our new feature to list all the Helpful Resorces near you, by selecting the range below </h3>
-  <select name="ranged">
-    <option selected="selected" disabled> Radius in Miles</option>
+  <h3 align="center">Also try our new feature to list all the Helpful Resorces near you, by selecting the range below </h3>
+  <select class="rad" name="ranged" required>
+    <option value="">Please select Radius</option>
+    <!-- <option selected="selected" disabled> Radius in Miles</option> -->
               <option value="2">2</option>
               <option value="5">5</option>
               <option value="10">10</option>
@@ -447,12 +532,12 @@
   <input type="hidden" id="address" name="address"/>
   <br /> 
   <!-- <input type="text" id = "location" name="location" placeholder="karan" />  -->
-  <button type="submit">Submit </button>
+  <button class="sub" type="submit">Submit </button>
     
-    
+    </div>
     
       </form> 
-
+</div>
     
 
     </body>
