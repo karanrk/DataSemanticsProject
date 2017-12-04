@@ -380,7 +380,7 @@ Diversity theatre's mission is to educate and serve as a catalyst for change.  <
     <ns301:Website xmlns:ns301="http://example.org/data/resources#">Area10@area10.bloomington.in.us</ns301:Website>
     <ns302:ZIP rdf:datatype="&xsd;integer" xmlns:ns302="http://example.org/data/resources#">47429</ns302:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Advocacy_Alzheimer_e2_80_99sNeeds">
+  <rdf:Description rdf:about="http://example.org/data/resources#Advocacy_Alzheimer'sNeeds">
     <ns303:Address_Line1 xmlns:ns303="http://example.org/data/resources#">431 S College Ave</ns303:Address_Line1>
     <ns304:City xmlns:ns304="http://example.org/data/resources#">Bloomington</ns304:City>
     <ns305:ContactE_mail xmlns:ns305="http://example.org/data/resources#">cweber2@iuhealth.org</ns305:ContactE_mail>

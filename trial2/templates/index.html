@@ -1,6 +1,7 @@
 <!-- howdy/templates/index.html -->
 <!DOCTYPE html>
 {% load static %}
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -72,10 +73,15 @@ strong {
         <h2 align="center">Let's join our hands to help the specially abled people with their basic needs and point them in the right direction </h2> 
 
         <p style="padding-right:90px; text-align:right;">Current User Address : <div id="addr" name="addr" style="padding-right:60px; text-align:right;"></div></p>
-        <p>
-          <div>
+        <div class="mp">{% load easy_maps_tags %}
+
+<!-- Default map with 300x400 dimensions -->
+
+{% easy_map "419 west amaryllis drive" 300 400 %}
+        
+          
           </div>
-        </p>
+        
 
 
         </div>

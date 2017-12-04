@@ -24,6 +24,10 @@ SECRET_KEY = 'q&wnrlz7onwbo9^b_i#9-762cbq2vpuq+@(=snn_0f23&o&$40'
 
 GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCte6QOlv615mhLpyIO01GN8S21gbYjNkw'
 
+EASY_MAPS_GOOGLE_MAPS_API_KEY = 'AIzaSyCte6QOlv615mhLpyIO01GN8S21gbYjNkw'
+
+EASY_MAPS_CENTER = (39.1762741, -86.4793424)
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'trial2',
     'geoposition',
+    'easy_maps',
 ]
 
 MIDDLEWARE = [
