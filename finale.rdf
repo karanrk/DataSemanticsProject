@@ -1498,7 +1498,7 @@ International Office</ns1228:ResourceName>
     <ns1231:Website xmlns:ns1231="http://example.org/data/resources#">www.interdys.org/index.htm</ns1231:Website>
     <ns1232:ZIP rdf:datatype="&xsd;integer" xmlns:ns1232="http://example.org/data/resources#">21204</ns1232:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer_27s_MiscellaneousServicesForFamiliesofIndianastate">
+  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer's_MiscellaneousServicesForFamiliesofIndiana">
     <ns1233:Address_Line1 xmlns:ns1233="http://example.org/data/resources#">9135 N. Meridian St., Suite B-4</ns1233:Address_Line1>
     <ns1234:City xmlns:ns1234="http://example.org/data/resources#">Indianapolis</ns1234:City>
     <ns1235:ContactE_mail xmlns:ns1235="http://example.org/data/resources#">N/A</ns1235:ContactE_mail>
@@ -1524,7 +1524,7 @@ www.alz.org/indiana
     <ns1246:Website xmlns:ns1246="http://example.org/data/resources#">information@alzindiana.org</ns1246:Website>
     <ns1247:ZIP rdf:datatype="&xsd;integer" xmlns:ns1247="http://example.org/data/resources#">46260</ns1247:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer_27s_MiscellaneousServices_EvansvilleRegion">
+  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer's_MiscellaneousServices_EvansvilleRegion">
     <ns1248:Address_Line1 xmlns:ns1248="http://example.org/data/resources#">4770 Covert Ave., Suite 211</ns1248:Address_Line1>
     <ns1249:City xmlns:ns1249="http://example.org/data/resources#">Evansville, </ns1249:City>
     <ns1250:ContactE_mail xmlns:ns1250="http://example.org/data/resources#">N/A</ns1250:ContactE_mail>
@@ -1544,7 +1544,7 @@ Evansville, Indiana Office</ns1258:ResourceName>
     <ns1261:Website xmlns:ns1261="http://example.org/data/resources#">info@alz.org</ns1261:Website>
     <ns1262:ZIP rdf:datatype="&xsd;integer" xmlns:ns1262="http://example.org/data/resources#">47714</ns1262:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer_27s_MiscellaneousServices_LexingtonRegion">
+  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer's_MiscellaneousServices_LexingtonRegion">
     <ns1263:Address_Line1 xmlns:ns1263="http://example.org/data/resources#">1065 Dove Run Rd.</ns1263:Address_Line1>
     <ns1264:City xmlns:ns1264="http://example.org/data/resources#">Lexington</ns1264:City>
     <ns1265:ContactE_mail xmlns:ns1265="http://example.org/data/resources#">N/A</ns1265:ContactE_mail>
@@ -1564,7 +1564,7 @@ Lexington, Kentucky Office</ns1273:ResourceName>
     <ns1276:Website xmlns:ns1276="http://example.org/data/resources#">info@alz.org</ns1276:Website>
     <ns1277:ZIP rdf:datatype="&xsd;integer" xmlns:ns1277="http://example.org/data/resources#">40502</ns1277:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer_27s_MiscellaneousServices_LimestoneRegion">
+  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer's_MiscellaneousServices_LimestoneRegion">
     <ns1278:Address_Line1 xmlns:ns1278="http://example.org/data/resources#">1252 Washington St.</ns1278:Address_Line1>
     <ns1279:City xmlns:ns1279="http://example.org/data/resources#">Columbus</ns1279:City>
     <ns1280:ContactE_mail xmlns:ns1280="http://example.org/data/resources#">N/A</ns1280:ContactE_mail>
@@ -1582,7 +1582,7 @@ Limestone Region Chapter</ns1288:ResourceName>
     <ns1291:Website xmlns:ns1291="http://example.org/data/resources#">N/A</ns1291:Website>
     <ns1292:ZIP rdf:datatype="&xsd;integer" xmlns:ns1292="http://example.org/data/resources#">47201</ns1292:ZIP>
   </rdf:Description>
-  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer_27s_MiscellaneousServices_LouisvilleRegion">
+  <rdf:Description rdf:about="http://example.org/data/resources#Alzheimer's_MiscellaneousServices_LouisvilleRegion">
     <ns1293:Address_Line1 xmlns:ns1293="http://example.org/data/resources#">3703 Taylorsville Rd., Suite 102</ns1293:Address_Line1>
     <ns1294:City xmlns:ns1294="http://example.org/data/resources#">Louisville</ns1294:City>
     <ns1295:ContactE_mail xmlns:ns1295="http://example.org/data/resources#">N/A</ns1295:ContactE_mail>

@@ -96,7 +96,7 @@ class homeview(TemplateView):
 				text=request.POST.get('dd1')
 				#Input validation
 				if text=='':
-					raise ValidationError(_('Please select one value from list'))
+					raise ValidationError(_('Please select atleast one value from list'))
 				
 
 				#prepare the query after getting the user input
@@ -212,7 +212,7 @@ class homeview(TemplateView):
 					d,a=getDetails_Haversine(di,dit,dit1,rng)
 					f10=1
 					t11=a
-					print 't11-->',t11
+					#print 't11-->',t11
 					t10=d
 				if rng == 5:
 					d,a=getDetails_Haversine(di,dit,dit1,rng)
@@ -239,27 +239,62 @@ class homeview(TemplateView):
 
 
 
-
+					#only resource name
 				if (f1==1 and f2 ==0 and f6==0 and f7==0 and f8==0 and f9==0 and f10==1):
 					args={'text':text,'t1':t1,'t10':t10,'k':k,'t11':t11}
+					
+					#only resource name and address
 				if (f1==1 and f2==1 and f6 ==0 and f7==0 and f8==0 and f9==0 and f10==1 ):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t10':t10,'k':k,'t11':t11}
+					
+					#resource name,address and Phone
 				if (f1==1 and f2==1 and f6==1 and f7 ==0 and f8==0 and f9==0 and f10==1):
-					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t6':t6,'t10':t10,'k':k,'t11':t11}
+					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t6':t6,'t10':t10,'k':k,'t11':t11}
+
+					#resource name,address,phone and email
+				if (f1==1 and f2==1 and f6==1 and f7 ==0 and f8==1 and f9==0 and f10==1):
+					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t6':t6,'t10':t10,'k':k,'t11':t11,'t8':t8}
+				
+					#All
 				if(f1==1 and f2==1 and f6==1 and f7==1 and f8==1 and f9==1 and f10==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'k':k,'t5':t5,'t6':t6,'t7':t7,'t8':t8,'t9':t9,'t10':t10,'t11':t11}
-						
 				
+					#resource name and phone
+				if (f1==1 and f2==0 and f6 ==1 and f7==0 and f8==0 and f9==0 and f10==1 ):
+					args={'text':text,'t1':t1,'t6':t6,'t10':t10,'k':k,'t11':t11}
+					
+					#resource name,description
+				if (f1==1 and f2==0 and f6 ==0 and f7==1 and f8==0 and f9==0 and f10==1 ):
+					args={'text':text,'t1':t1,'t7':t7,'t10':t10,'k':k,'t11':t11}
+				
+					#resource name and email
+				if (f1==1 and f2==0 and f6 ==0 and f7==0 and f8==1 and f9==0 and f10==1 ):
+					args={'text':text,'t1':t1,'t8':t8,'t10':t10,'k':k,'t11':t11}
+						
+					#resource name,address,website,description
 				if(f1==1 and f2==1 and f9==1 and f7==1 and f8==0):
 					args={'text':text,'t1':t1,'t4':t4,'t2':t2,'t3':t3,'t5':t5,'t9':t9,'t7':t7,'k':k,'t10':t10,'t11':t11}
+					
+					#resource name,description,website
 				if(f1==1 and f2==0 and f7==1 and f9==1 and f8==0):
 					args={'text':text,'t7':t7,'t9':t9,'k':k,'t10':t10,'t1':t1,'t11':t11}
+				
+					#resource name and website
 				if(f1==1 and f2==0 and f7==0 and f8==0 and f9==1):
 					args={'text':text,'t1':t1,'t9':t9,'k':k,'t10':t10,'t11':t11}
+					#resource name,address and website
 				if(f1==1 and f2==1 and f7==0 and f8==0 and f9==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t9':t9,'k':k,'t10':t10,'t11':t11}
-				if(f1==0 and f2==1 and f7==0 and f8==0 and f9==0):
-					args={'text':text,'t2':t2,'k':k,'t10':t10,'t11':t11}
+					
+					#resource name description , email and website
+				if(f1==1 and f2==0 and f7==1 and f8==1 and f9==1):
+					args={'text':text,'t7':t7,'t8':t8,'k':k,'t10':t10,'t11':t11,'t9':t9}
+
+					#resource name,address description , email and website
+
+				if(f1==1 and f2==1 and f7==1 and f8==1 and f9==1 and f6==0):
+					args={'text':text,'t7':t7,'t8':t8,'k':k,'t10':t10,'t11':t11,'t9':t9,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5}	
+				
 				if(f1==0 and f2==0 and f6==1 and f7==0):
 					args={'text':text,'t6':t6,'k':k,'t10':t10,'t11':t11,'t7':t7}
 				if(f1==1 and f9==1 and f8==0 and f7==0 and f2==0):

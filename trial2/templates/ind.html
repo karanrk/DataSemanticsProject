@@ -20,7 +20,7 @@
 </head>
  
 <body>  
-<nav class="navbar navbar-default navbar-fixed-top" color-on-scroll="200">
+<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
         <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
         <div class="container">
             <div class="navbar-header">
@@ -30,7 +30,7 @@
                     <span class="icon-bar bar2"></span>
                     <span class="icon-bar bar3"></span>
                 </button>
-                <a href="http://127.0.0.1:8000" class="navbar-brand">
+                <a href="http://www.creative-tim.com" class="navbar-brand">
                     Bloomington Resource Locator for the Differently-Abled
                 </a>
             </div>
@@ -81,9 +81,9 @@
   	{% csrf_token %}  
             <div class="row">
                 <div class="title-area">
-                    <h2>Bloomington Resource Locator</h2>
+                    <h2>Resource Locator</h2>
                     <div class="separator separator-danger">✻</div>
-                    <p class="description">Please let us know the <strong>Main area of your concern</strong>,by selecting the primary category from below list.</p>
+                    <p class="description">Please let us know the <strong>main area of your concern</strong>, by selecting the primary category from below list.</p>
                 </div>
             </div>
             <div class="row">
@@ -99,7 +99,7 @@
             <div class="row">
 		<div class="col-md-2"></div>
                 <div class="col-md-8">
-                	<label>Please Select the category Here:</label>
+                	<label>Select the category of your search:</label>
                 	<select name="dd1" required autofocus class="form-control" align="center">
     				<option value="">Please select</option>
     				 <option value="AccessibilityEquipments_Wheelchairs">AccessibilityEquipments_Wheelchairs</option>
@@ -107,8 +107,7 @@
             <option value="Addictions_Alcohol_DrugAbuse_Aging_childcare">Addictions_Alcohol_DrugAbuse_Aging_childcare</option>
             <option value="Addictions_Alcohol_DrugAbuse_AssistanceService">Addictions_Alcohol_DrugAbuse_AssistanceService</option>
             <option value="Addictions_Alcohol_DrugAbuse_BloomingtonRegion">Addictions_Alcohol_DrugAbuse_BloomingtonRegion</option>
-            <option value="Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture">
-            Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture</option>
+            <option value="Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture">Addictions_Alcohol_DrugAbuse_Education_Training_DisabilityCulture</option>
             <option value="Addictions_Alcohol_DrugAbuse_MiscellaneousServices">Addictions_Alcohol_DrugAbuse_MiscellaneousServices</option>
             <option value="Addictions_Alcohol_DrugAbuse_Rehabs">Addictions_Alcohol_DrugAbuse_Rehabs</option>
             <option value="AddictionsOrAlcohol_DrugAbuse_ElkhartRegion">AddictionsOrAlcohol_DrugAbuse_ElkhartRegion</option>
@@ -184,11 +183,11 @@
             <option value="AgingRehabServices">AgingRehabServices</option>
             <option value="AIDSEducation_Training_HealthEducation">AIDSEducation_Training_HealthEducation</option>
             <option value="AIDSPreventionSupportGroups">AIDSPreventionSupportGroups</option>
-            <option value="Alzheimer's_MiscellaneousServices_EvansvilleRegion">Alzheimer's_MiscellaneousServices_EvansvilleRegion</option>
-            <option value="Alzheimer's_MiscellaneousServices_LexingtonRegion">Alzheimer's_MiscellaneousServices_LexingtonRegion</option>
-            <option value="Alzheimer's_MiscellaneousServices_LimestoneRegion">Alzheimer's_MiscellaneousServices_LimestoneRegion</option>
-            <option value="Alzheimer's_MiscellaneousServices_LouisvilleRegion">Alzheimer's_MiscellaneousServices_LouisvilleRegion</option>
-            <option value="Alzheimer's_MiscellaneousServicesForFamiliesofIndiana">Alzheimer's_MiscellaneousServicesForFamiliesofIndiana</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_EvansvilleRegion">Alzheimer_27s_MiscellaneousServices_EvansvilleRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LexingtonRegion">Alzheimer_27s_MiscellaneousServices_LexingtonRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LimestoneRegion">Alzheimer_27s_MiscellaneousServices_LimestoneRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServices_LouisvilleRegion">Alzheimer_27s_MiscellaneousServices_LouisvilleRegion</option>
+            <option value="Alzheimer_27s_MiscellaneousServicesForFamiliesofIndianastate">Alzheimer_27s_MiscellaneousServicesForFamiliesofIndianastate</option>
             <option value="Dyslexia-Information">Dyslexia-Information</option>
             <option value="AmericanSignLanguage_ForVisuallyImpaired">AmericanSignLanguage_ForVisuallyImpaired</option>
             <option value="AmericanSignLanguage_HealthEducation_HearingImpairments">AmericanSignLanguage_HealthEducation_HearingImpairments</option>
@@ -501,7 +500,6 @@
             <option value="Women_Problems">Women_Problems</option>
             <option value="WomenHealthServices_STD_testing">WomenHealthServices_STD_testing</option>
             <option value="Workforce_Development">Workforce_Development</option>
-
     			</select>
                 </div>
                 <div class="col-md-2"></div>
@@ -509,7 +507,7 @@
             <div class="row">
             	<div class="col-md-2"></div>
             	<div class="col-md-8">
-            		<label>Check the required details from below:</label>
+            		<label>Select the result details to be displayed:</label>
             	</div>
             	<div class="col-md-2"></div>
             </div>
@@ -555,8 +553,6 @@
     		<div class="col-md-2"></div>
              </div>
              <input type="hidden" id="address" name="address"/>
-             <input type="hidden" id="latitude" name="latitude"/>
-             <input type="hidden" id="longitude" name="longitude" />
              <div class="row">
              	<div class="col-md-2"></div>
                 	<div class="col-md-8" align="center">
@@ -669,7 +665,7 @@
             </div>
             <hr>
             <div class="copyright">
-                 © <script> document.write(new Date().getFullYear()) </script> Karan and Samvat, made with love and Affection
+                 © <script> document.write(new Date().getFullYear()) </script> Creative Tim, made with love
             </div>
         </div>
     </footer>
@@ -685,8 +681,8 @@
 <script type="text/javascript" src="http://127.0.0.1:8000/static/assets/js/modernizr.js"></script>
 
 <!--  script for google maps   -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iq-HyPHiYDh_1Qma5b82LCLL7rFHs8E"></script>
-<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script?
 
 <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
 <script type="text/javascript" src="http://127.0.0.1:8000/static/assets/js/gaia.js"></script>
@@ -720,6 +716,7 @@ var currentLocation;
 
         function initializeCurrent(latcurr, longcurr) {
              currgeocoder = new google.maps.Geocoder();
+             console.log(latcurr + " # " + longcurr);
 
              if (latcurr != null && longcurr != null) {
                  var mycooridinates = new google.maps.LatLng(latcurr, longcurr);
@@ -729,7 +726,7 @@ var currentLocation;
 
 
 	function populateMap(currentLocation) {
-	console.log(currentLocation);
+    console.log(currentLocation);
     var lat=currentLocation[0];
     var lon=currentLocation[1];
     var zoom   = 15;
@@ -761,12 +758,9 @@ var currentLocation;
             }, function(results, status) {
            
                 if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results);
+                    console.log(results[0]);
                     $("#address").val(results[0].formatted_address);
                     $("#addr").html(results[0].formatted_address);
-                    console.log(currentLocation);
-                    $("#latitude").val(currentLocation[0]);
-                    $('#longitude').val(currentLocation[1]);
                     populateMap(currentLocation);
                 } else {
                     console.log('Geocode was not successful for the following reason: ' + status);

@@ -1,0 +1,147 @@
+<!-- howdy/templates/about.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Karan</title>
+	</head>
+   <body>
+<div id="mapdiv" style="height:400px;width:400px;"></div>
+
+
+  <script src="https://openlayers.org/api/OpenLayers.js"></script> 
+  <script>
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+    
+    epsg4326 =  new OpenLayers.Projection("EPSG:4326"); //WGS 1984 projection
+    projectTo = map.getProjectionObject(); 
+    var lonLat = new OpenLayers.LonLat( -86.4978327521 ,39.1723715 ).transform(epsg4326, projectTo);
+          
+    var zoom=11;
+    map.setCenter (lonLat, zoom);
+
+    var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+    console.log(vectorLayer);
+    
+    var markers = {{t11}};
+    // var rns = '{{t10}}';
+    // console.log(rns);
+    // console.log(rns[0]);
+    
+    //Loop through the markers array
+    for (var i=0; i<markers.length; i++) {
+      
+       var lon = markers[i][1]
+        
+       
+       var lat = markers[i][0]
+        
+       
+       //console.log(lon)
+       //console.log(lat)
+
+
+       
+       
+        var feature = new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.Point( lon, lat ).transform(epsg4326, projectTo),
+                {description: "marker number " + i} ,
+                {externalGraphic: 'static/images/marker.jpg', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
+            );             
+        vectorLayer.addFeatures(feature);
+    }                        
+    
+    map.addLayer(vectorLayer);
+  </script>
+
+
+
+
+    
+   
+        <h1 align="center">Welcome to the Bloomington Resource locator page with the requested details !!</h1>
+        <h4 align="right" padding-left="150px" > User Lattitue and Longitude : {{k}} </h4>
+
+ 
+
+ <h3> The input selected is {{text}} </h3>
+ 
+ {% if t1 %}
+  <h3> Resource/Service Name: {{t1}} </h3>
+  {% endif %}
+    
+  {% if t2 %}
+  <h3> Address : {{t2}} {{t3}},{{t4}} {{t5}} </h3>
+  {% endif  %}
+
+  
+
+
+    <!-- <div id="Map" style="height:500px;width:500px;"></div> -->
+
+
+  <!-- {% load easy_maps_tags %}
+
+Default map with 300x400 dimensions
+  {% easy_map "{t2} {t3} {t4} {t5}" 300 400 %}-->
+
+ {% if t6 %}
+  <h3> Phone Number : {{t6}} </h3>
+  {% endif  %}
+ 
+ 
+ {% if t7 %}
+  <h4> Description : {{t7}} </h3>
+ {% endif  %}
+ 
+ {% if t8 %}
+ <h4> Email : {{t8}} </h3>
+ {% endif  %}
+ 
+ {% if t9 %}
+ <h4> Website : {{t9}} </h4>
+ {% endif  %}
+
+ 
+
+
+
+ <h3 align="center"> Resources within selected Radius </h3>
+ 
+ 
+
+
+<table border="2" align="center">
+<tr>
+  <th>Resource Name</th>
+  <th>Distance (Miles)</th>
+  <th>Address</th>
+  <th>Primary Category</th>
+  
+</tr>
+
+
+{% for a,d,r,pc in t10 %}
+<tr>
+<td align="center">{{r}} </td>
+<td align="center">{{d}} </td>
+<td align="center">{{a}} </td>
+<td align="center">{{pc}} </td>
+<!-- <td align="center">{{pc}} </td> -->
+</tr>
+{% endfor %}
+
+</table> 
+
+
+
+
+
+ 
+ 
+    
+    <a href="/">Go back home</a>
+     
+    </body>
+</html>

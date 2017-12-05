@@ -1,108 +1,95 @@
+<!-- howdy/templates/index.html -->
 <!DOCTYPE html>
 {% load static %}
+
 <html>
     <head>
-    	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Bloomington Resource Locator for the Differently-Abled</title>
-    	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    	<link href="http://127.0.0.1:8000/static/assets/css/bootstrap.css" rel="stylesheet" />
-    	<link href="http://127.0.0.1:8000/static/assets/css/gaia.css" rel="stylesheet"/>
-
-    	<!--     Fonts and icons     -->
-	<link href='https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600' rel='stylesheet' type='text/css'>
-    	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    	<link href="http://127.0.0.1:8000/static/assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">
-
+        <meta charset="utf-8">
+        <title>Data Semantics Project</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+        <style style="text/css">
+.bg{
+  background-image: url("static/images/difabled.jpg");
+  /*width: 150px;*/
+  /*height: 200px;*/
+  height: 500px;
+  background-size: cover;
+  /*filter: brightness(50%);*/
+  
+  background-repeat: no-repeat;
+  background-position: 200% 200%;
+  /*background-origin: content-box ;*/
+  background-attachment: fixed;
+  -webkit-transition: background-image 0.5s linear;}
+.bg2{
+  background-image: url("static/images/help.jpg");
+  /*width: 150px;*/
+  /*height: 200px;*/
+  height: 1000px;
+  /*filter: brightness(50%);*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 190% 190%;
+  /*background-origin: content-box ;*/
+  /*background-attachment: fixed;*/
+}
+h1 { color: red;}
+h2 {color: blue;}
+.chk{
+  display:inline-block;}
+select{
+  margin-left: 700px;}
+.sub{
+ margin-left: 850px; }
+.rad{
+ margin-left: 800px; }
+strong {
+  text-decoration: underline;
+  text-decoration-style: solid;}
+  .col {
+    color: white;
+  }
+</style>
 
 </head>
- 
+
 <body>  
-<nav class="navbar navbar-default navbar-fixed-top" color-on-scroll="200">
-        <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
-        <div class="container">
-            <div class="navbar-header">
-                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                </button>
-                <a href="http://127.0.0.1:8000" class="navbar-brand">
-                    Bloomington Resource Locator for the Differently-Abled
-                </a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                    <li>
-                        <a href="#search">Search Resources</a>
-                    </li>
- 			<li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-    </nav>
+        <div class="bg">
+        <h1 align="center">Bloomington Resource Locator for the Differently-Abled</h1>
+        <h2 align="center">Let's join our hands to help the specially abled people with their basic needs and point them in the right direction </h2> 
 
- <div class="section section-header">
-        <div class="parallax filter filter-color-red">
-            <div class="image"
-                style="background-image: url('static/assets/img/header-1.jpeg')">
-            </div>
-            <div class="container">
-                <div class="content">
-                    <div class="title-area">
-                        <h1 class="title-modern">Bloomington Resource Locator for the Differently-Abled</h1>
-                        <h3>Let's join our hands to help the specially abled people with their basic needs and point them in the right direction</h2>
-                        <div class="separator line-separator">♦</div>
-                    </div>
+        <p style="padding-right:90px; text-align:right;">Current User Address : <div id="addr" name="addr" style="padding-right:60px; text-align:right;"></div></p>
+        <div class="mp">{% load easy_maps_tags %}
 
-                    <div class="button-get-started">
-                        <a href="#search" class="btn btn-white btn-fill btn-lg ">
-                            Search Resources
-                        </a>
-                    </div>
-                </div>
+<!-- Default map with 300x400 dimensions -->
 
-            </div>
-        </div>
-    </div>
-           
+{% easy_map "419 west amaryllis drive" 300 400 %}
         
-      <div class="section" id="search">
-        <div class="container">
           
+          </div>
         
-  	<form  method="POST" name="collect_data" class="form-group">
-  	{% csrf_token %}  
-            <div class="row">
-                <div class="title-area">
-                    <h2>Bloomington Resource Locator</h2>
-                    <div class="separator separator-danger">✻</div>
-                    <p class="description">Please let us know the <strong>Main area of your concern</strong>,by selecting the primary category from below list.</p>
-                </div>
-            </div>
-            <div class="row">
-		<div class="col-md-2"></div>
-                <div class="col-md-8">
-                	<label>Your current address:</label>
-                	<div id="addr" name="addr"></div>
-                	<div id="Map" style="height:250px"></div>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-            <br/><br/>
-            <div class="row">
-		<div class="col-md-2"></div>
-                <div class="col-md-8">
-                	<label>Please Select the category Here:</label>
-                	<select name="dd1" required autofocus class="form-control" align="center">
-    				<option value="">Please select</option>
-    				 <option value="AccessibilityEquipments_Wheelchairs">AccessibilityEquipments_Wheelchairs</option>
+
+
+        </div>
+  
+        
+        <!-- <img src= "static/images/k.jpeg" /> -->
+     <br />
+
+
+     <div class="bg2">
+     <form  method="POST" name="collect_data">
+    <br />
+  {% csrf_token %}
+  <!-- {{ form.as_p }} -->
+  <!-- <input type="text" id="dis" name="disease"/> -->
+    <h3  class="col" align="center"> Please Let us know the <strong> main area of your concern </strong>, by selecting the primary category from below list </h3>
+
+  <select name="dd1" required autofocus>
+    <option value="">Please select</option>
+    <!-- <option selected="selected" disabled>Primary Category of Disability</option> -->
+            <option value="AccessibilityEquipments_Wheelchairs">AccessibilityEquipments_Wheelchairs</option>
             <option value="Addictions_Alcohol_DrugAbuse_Advocacy">Addictions_Alcohol_DrugAbuse_Advocacy</option>
             <option value="Addictions_Alcohol_DrugAbuse_Aging_childcare">Addictions_Alcohol_DrugAbuse_Aging_childcare</option>
             <option value="Addictions_Alcohol_DrugAbuse_AssistanceService">Addictions_Alcohol_DrugAbuse_AssistanceService</option>
@@ -502,211 +489,63 @@
             <option value="WomenHealthServices_STD_testing">WomenHealthServices_STD_testing</option>
             <option value="Workforce_Development">Workforce_Development</option>
 
-    			</select>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-            <div class="row">
-            	<div class="col-md-2"></div>
-            	<div class="col-md-8">
-            		<label>Check the required details from below:</label>
-            	</div>
-            	<div class="col-md-2"></div>
-            </div>
-            <br/><br/>
-            <div class="row">
-            	<div class="col-md-3"></div>
-                <div class="col-md-2" align="center">
-                	<label><input type="checkbox" id="rn" name="ResourceName" class="form-control" />Resource Name</label>
-                </div>
-                <div class="col-md-2" align="center">
-                	<label><input type="checkbox" id="ad" name="Addr" class="form-control" />Address</label>
-                </div>
-                <div class="col-md-2" align="center">
-	                <label><input type="checkbox" id="ph" name="Phone" class="form-control"/>Phone</label>
-	        </div>
-	        <div class="col-md-3"></div>
-	    </div>
-	    <div class="row">
-            	<div class="col-md-3"></div>
-                <div class="col-md-2" align="center">
-	                <label><input type="checkbox" id="web" name="website" class="form-control" />Website</label>
-	        </div>
-                <div class="col-md-2" align="center">
-	                <label><input type="checkbox" id="ss" name="description" class="form-control"/>Description</label>
-	        </div>
-                <div class="col-md-2" align="center">
-	                <label><input type="checkbox" id="em" name="email" class="form-control"/>Email</label>
-	        </div>
-	        <div class="col-md-3"></div>
-	    </div>
-             <br/><br/>
-             <div class="row">
-             	<div class="col-md-2"></div>
-                <div class="col-md-8">
-                	<label>Select the radius of search:</label>
-             		<select class="rad form-control" name="ranged" required  align="center" >
-    				<option value="">Please select Radius</option>
-              			<option value="2">2</option>
-              			<option value="5">5</option>
-              			<option value="10">10</option>
-    			</select>
-    		</div>
-    		<div class="col-md-2"></div>
-             </div>
-             <input type="hidden" id="address" name="address"/>
-             <input type="hidden" id="latitude" name="latitude"/>
-             <input type="hidden" id="longitude" name="longitude" />
-             <div class="row">
-             	<div class="col-md-2"></div>
-                	<div class="col-md-8" align="center">
-             			<button class="sub form-control" type="submit">Search</button>
-    			</div>
-    		<div class="col-md-2"></div>
-             </div>
-             </form>
-        </div>
-    </div>
-   <footer class="footer footer-big footer-color-black" data-color="black">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Company</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="#">Home</a></li>
-                                <li>
-                                    <a href="#">Find offers</a>
-                                </li>
-                                <li>
-                                    <a href="#">Discover Projects</a>
-                                </li>
-                                <li>
-                                    <a href="#">Our Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="#">About Us</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-3 col-md-offset-1 col-sm-3">
-                    <div class="info">
-                        <h5 class="title"> Help and Support</h5>
-                         <nav>
-                            <ul>
-                                <li>
-                                    <a href="#">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">How it works</a>
-                                </li>
-                                <li>
-                                    <a href="#">Terms &amp; Conditions</a>
-                                </li>
-                                <li>
-                                    <a href="#">Company Policy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Money Back</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Latest News</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i> <b>Get Shit Done</b> The best kit in the market is here, just give it a try and let us...
-                                        <hr class="hr-small">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-twitter"></i> We've just been featured on <b> Awwwards Website</b>! Thank you everybody for...
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-2 col-md-offset-1 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Follow us on</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="#" class="btn btn-social btn-facebook btn-simple">
-                                        <i class="fa fa-facebook-square"></i> Facebook
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn btn-social btn-dribbble btn-simple">
-                                        <i class="fa fa-dribbble"></i> Dribbble
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn btn-social btn-twitter btn-simple">
-                                        <i class="fa fa-twitter"></i> Twitter
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn btn-social btn-reddit btn-simple">
-                                        <i class="fa fa-google-plus-square"></i> Google+
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="copyright">
-                 © <script> document.write(new Date().getFullYear()) </script> Karan and Samvat, made with love and Affection
-            </div>
-        </div>
-    </footer>
+ 
+            
+    </select>
 
+
+  <br />
+  <br />
+  <div class="col">
+  <table> 
+    <tr>
+      <td width="50%"><label><input type="checkbox" id="rn" name="ResourceName"/>Resource Name</label></td>
+    <td width="46%"><label><input type="checkbox" id="ad" name="Addr"/>Address</label></td>
+    <td width="30%"><label><input type="checkbox" id="ph" name="Phone"/>Phone</label></td>
+  </tr>
+  <tr>
+    <td><label><input type="checkbox" id="web" name="website" />Website</label></td>
+    <td><label><input type="checkbox" id="ss" name="description"/>Description</label></td>
+    <td><label><input type="checkbox" id="ss" name="email"/>Email</label><br /></td>
+  </tr>
+</table>
+
+  <br />
+
+  
+  <h3 align="center">Also try our new feature to list all the Helpful Resorces near you, by selecting the range below </h3>
+  <select class="rad" name="ranged" required>
+    <option value="">Please select Radius</option>
+    <!-- <option selected="selected" disabled> Radius in Miles</option> -->
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+    </select> 
+  <br />
+
+  <input type="hidden" id="address" name="address"/>
+  <br /> 
+  <!-- <input type="text" id = "location" name="location" placeholder="karan" />  -->
+  <button class="sub" type="submit">Submit </button>
+    
+    </div>
+    
+      </form> 
+</div>
     
 
     </body>
-<!--   core js files    -->
-<script src="http://127.0.0.1:8000/static/assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="http://127.0.0.1:8000/static/assets/js/bootstrap.js" type="text/javascript"></script>
 
-<!--  js library for devices recognition -->
-<script type="text/javascript" src="http://127.0.0.1:8000/static/assets/js/modernizr.js"></script>
-
-<!--  script for google maps   -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9iq-HyPHiYDh_1Qma5b82LCLL7rFHs8E"></script>
-<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
-
-<!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
-<script type="text/javascript" src="http://127.0.0.1:8000/static/assets/js/gaia.js"></script>
 <script type="text/javascript" charset="utf-8">
-
- 
  $(document).ready(function() {
- 
- var currgeocoder;
+         var currgeocoder;
          //Set geo location lat and long
-var currentLocation;
          navigator.geolocation.getCurrentPosition(function(position, html5Error) {
-	     geo_location = processGeolocationResult(position);
-	     currentLocation = geo_location.split(",")
-             initializeCurrent(currentLocation[0], currentLocation[1]);
-
+             geo_loc = processGeolocationResult(position);
+             currLatLong = geo_loc.split(",");
+             initializeCurrent(currLatLong[0], currLatLong[1]);
         });
-
         //Get geo location result
-
        function processGeolocationResult(position) {
              html5Lat = position.coords.latitude; //Get latitude
              html5Lon = position.coords.longitude; //Get longitude
@@ -715,69 +554,41 @@ var currentLocation;
              html5Accuracy = position.coords.accuracy; //Get accuracy in meters
              return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
        }
-
         //Check value is present or not & call google api function
-
         function initializeCurrent(latcurr, longcurr) {
              currgeocoder = new google.maps.Geocoder();
-
-             if (latcurr != null && longcurr != null) {
-                 var mycooridinates = new google.maps.LatLng(latcurr, longcurr);
-                 return getCurrentAddress(mycooridinates);
+             console.log(latcurr + "-- ######## --" + longcurr);
+             if (latcurr != '' && longcurr != '') {
+                 var myLatlng = new google.maps.LatLng(latcurr, longcurr);
+                 return getCurrentAddress(myLatlng);
              }
        }
-
-
-	function populateMap(currentLocation) {
-	console.log(currentLocation);
-    var lat=currentLocation[0];
-    var lon=currentLocation[1];
-    var zoom   = 15;
-
-    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-    var position_map      = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
-
-    map = new OpenLayers.Map("Map");
-    var mapnik   = new OpenLayers.Layer.OSM();
-    map.addLayer(mapnik);
-
-    var markers = new OpenLayers.Layer.Markers( "Markers" );
-    map.addLayer(markers);
-    location1 = new OpenLayers.LonLat(currentLocation[1], currentLocation[0]).transform( fromProjection, toProjection);
-    markers.addMarker(new OpenLayers.Marker(location1));
-    markers.markers["0"].icon.imageDiv.title = $("#address").val() ;
-    map.setCenter(location1, zoom);
-    }
-
-
-
         //Get current address
-
          function getCurrentAddress(location) {
               currgeocoder.geocode({
                   'location': location
-
             }, function(results, status) {
            
                 if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results);
+                    console.log(results[0]);
                     $("#address").val(results[0].formatted_address);
                     $("#addr").html(results[0].formatted_address);
-                    console.log(currentLocation);
-                    $("#latitude").val(currentLocation[0]);
-                    $('#longitude').val(currentLocation[1]);
-                    populateMap(currentLocation);
                 } else {
-                    console.log('Geocode was not successful for the following reason: ' + status);
+                    alert('Geocode was not successful for the following reason: ' + status);
                 }
             });
          }
-
-
-
-
+         /*var infowindow = new google.maps.InfoWindow({
+    
+        position: pos,
+        content: 'Location found using HTML5.'
+        });
+        // the below line has been inserted to assign a JS variable to HTML input field called 'geolocation' 
+        document.getElementById('location').value = pos*/
+        
+        //he below line has been inserted to autosubmit the form.  
+        /*document.getElementById("geolocation").submit();*/ 
       });
-
-</script>
+    </script>   
+    
 </html>
