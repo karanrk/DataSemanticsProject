@@ -52,7 +52,7 @@
                 <div class="title-area">
                     <br />
                     <h2>Bloomington Resource Locator</h2>
-                    <h3>For the Specially Abled </h3>
+                    <h3>For the Differently Abled </h3>
                     <div class="separator separator-danger">✻</div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-3">
                     <div class="info">
-                        <h5 class="title">Company</h5>
+                        <!-- <h5 class="title">Company</h5>
                         <nav>
                             <ul>
                                 <li>
@@ -162,11 +162,11 @@
                                     <a href="#">About Us</a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> -->
                     </div>
                 </div>
                 <div class="col-md-3 col-md-offset-1 col-sm-3">
-                    <div class="info">
+                    <!-- <div class="info">
                         <h5 class="title"> Help and Support</h5>
                          <nav>
                             <ul>
@@ -187,10 +187,10 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-3 col-sm-3">
-                    <div class="info">
+                    <!-- <div class="info">
                         <h5 class="title">Latest News</h5>
                         <nav>
                             <ul>
@@ -207,10 +207,10 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-2 col-md-offset-1 col-sm-3">
-                    <div class="info">
+                    <!-- <div class="info">
                         <h5 class="title">Follow us on</h5>
                         <nav>
                             <ul>
@@ -237,7 +237,7 @@
                             </ul>
                         </nav>
                     </div>
-                </div>
+                </div> -->
             </div>
             <hr>
             <div class="copyright">
@@ -303,8 +303,8 @@
        
         var feature = new OpenLayers.Feature.Vector(
                 new OpenLayers.Geometry.Point( lon, lat ).transform(epsg4326, projectTo),
-                {description: "marker number " + i} //,
-                //{externalGraphic: 'static/images/marker.jpg', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
+                {description: "marker number " + i}, 
+                {externalGraphic: 'static/images/marker.png', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
             );             
         vectorLayer.addFeatures(feature);
     }                        

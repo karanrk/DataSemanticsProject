@@ -66,8 +66,10 @@ class homeview(TemplateView):
 	
 			try:
 				loc= geolocator.geocode(ad1)
-			except GeocoderTimedOut:
-				geocoding(ad1)
+			# except GeocoderTimedOut:
+			except:
+				# geocoding(ad1)
+				loc= geolocator.geocode(ad1)
 			print 'loc',loc
 			if (loc):
 				return loc
@@ -251,6 +253,9 @@ class homeview(TemplateView):
 				if (f1==1 and f2==1 and f6==1 and f7 ==0 and f8==0 and f9==0 and f10==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t6':t6,'t10':t10,'k':k,'t11':t11}
 
+				if (f1==1 and f2==1 and f6==1 and f7 ==1 and f8==0 and f9==0 and f10==1):
+					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t6':t6,'t10':t10,'k':k,'t11':t11,'t7':t7}	
+
 					#resource name,address,phone and email
 				if (f1==1 and f2==1 and f6==1 and f7 ==0 and f8==1 and f9==0 and f10==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t6':t6,'t10':t10,'k':k,'t11':t11,'t8':t8}
@@ -285,6 +290,9 @@ class homeview(TemplateView):
 					#resource name,address and website
 				if(f1==1 and f2==1 and f7==0 and f8==0 and f9==1):
 					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t9':t9,'k':k,'t10':t10,'t11':t11}
+
+				if(f1==1 and f2==1 and f7==0 and f8==1 and f9==0):
+					args={'text':text,'t1':t1,'t2':t2,'t3':t3,'t4':t4,'t5':t5,'t8':t8,'k':k,'t10':t10,'t11':t11}	
 					
 					#resource name description , email and website
 				if(f1==1 and f2==0 and f7==1 and f8==1 and f9==1):
